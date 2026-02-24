@@ -20,20 +20,20 @@ export function Banner() {
             Erkur AVM V1
           </p>
           <h1 className="mt-3 text-3xl font-bold leading-tight text-[color:var(--color-foreground)] md:text-5xl">
-            Kirmizi-Beyaz temada modern e-ticaret altyapisi
+            Kırmızı-Beyaz temada modern e-ticaret altyapısı
           </h1>
           <p className="mt-4 max-w-2xl text-sm text-[color:var(--color-muted)] md:text-base">
-            Banner, urun sectionlari, menu mimarisi ve admin panel route gruplari hazir. Sprint 2 icin
-            urun-kategori-sepet akisina gecilebilir.
+            Banner, ürün bölümleri, menü mimarisi ve admin panel route grupları hazır. Sprint 2 için
+            ürün-kategori-sepet akışına geçilebilir.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
             <Link href="/products">
-              <Button className="h-11 px-6">Urunlere Git</Button>
+              <Button className="h-11 px-6 text-white">Ürünlere Git</Button>
             </Link>
             <Link href="/products?campaign=flash">
               <Button variant="secondary" className="h-11 px-6">
-                Kampanyalari Gor
+                Kampanyaları Gör
               </Button>
             </Link>
           </div>
@@ -41,7 +41,7 @@ export function Banner() {
 
         <aside className="rounded-2xl border border-[color:var(--color-border)] bg-[linear-gradient(150deg,_#fff7f8,_#ffffff)] p-4 shadow-[0_14px_30px_rgba(15,23,42,0.08)]">
           <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--color-primary)]">
-            <SparklesIcon className="size-4" /> Mega Menu Hizli Erisim
+            <SparklesIcon className="size-4" /> Mega Menü Hızlı Erişim
           </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-3 xl:grid-cols-1 2xl:grid-cols-3">
             {megaColumns.map((column) => (

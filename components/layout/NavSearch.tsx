@@ -66,7 +66,7 @@ export function NavSearch({ className = "" }: NavSearchProps) {
               setOpen(true);
             }
           }}
-          placeholder="Urun, kategori ara..."
+          placeholder="Ürün, kategori ara..."
           className="h-full w-full bg-transparent px-2 text-sm outline-none"
         />
       </div>
@@ -109,7 +109,7 @@ export function NavSearch({ className = "" }: NavSearchProps) {
               ))}
             </div>
           ) : (
-            <p className="p-4 text-sm text-[color:var(--color-muted)]">Sonuc bulunamadi.</p>
+            <p className="p-4 text-sm text-[color:var(--color-muted)]">Sonuç bulunamadı.</p>
           )}
         </div>
       ) : null}

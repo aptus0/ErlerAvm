@@ -90,7 +90,7 @@ export function Navbar() {
             />
             <div className="hidden sm:block">
               <p className="text-xs uppercase tracking-[0.18em] text-[color:var(--color-muted)]">ERLER AVM</p>
-              <p className="text-sm font-bold text-[color:var(--color-primary)]">Kirmizi-Beyaz Alisveris</p>
+              <p className="text-sm font-bold text-[color:var(--color-primary)]">Kırmızı-Beyaz Alışveriş</p>
             </div>
           </Link>
 
@@ -103,7 +103,7 @@ export function Navbar() {
               className="inline-flex h-10 items-center gap-1 rounded-xl border border-[color:var(--color-border)] bg-white px-3 text-sm font-semibold hover:border-[color:var(--color-primary)] hover:text-[color:var(--color-primary)]"
             >
               <UserCircleIcon className="size-5" />
-              <span className="hidden sm:inline">Hesabim</span>
+              <span className="hidden sm:inline">Hesabım</span>
             </Link>
 
             <Link
@@ -119,7 +119,7 @@ export function Navbar() {
               type="button"
               onClick={() => setMobileOpen((current) => !current)}
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[color:var(--color-border)] text-[color:var(--color-muted)] md:hidden"
-              aria-label="Mobil menuyu ac"
+              aria-label="Mobil menüyü aç"
             >
               {mobileOpen ? <XMarkIcon className="size-6" /> : <Bars3Icon className="size-6" />}
             </button>
@@ -174,7 +174,7 @@ export function Navbar() {
                       <button
                         type="button"
                         className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-[color:var(--color-muted)] transition hover:bg-white hover:text-[color:var(--color-primary)]"
-                        aria-label={`${item.title} alt menusu`}
+                        aria-label={`${item.title} alt menüsü`}
                         aria-expanded={isOpen}
                         onClick={() => setOpenMenuId((current) => (current === item.id ? null : item.id))}
                       >
@@ -284,7 +284,7 @@ export function Navbar() {
                             }))
                           }
                           className="inline-flex h-10 w-10 items-center justify-center"
-                          aria-label="Alt menuyu ac"
+                          aria-label="Alt menüyü aç"
                         >
                           <ChevronDownIcon
                             className={[

@@ -54,13 +54,13 @@ export function FeaturedProducts({ title, description, products }: FeaturedProdu
                 type="button"
                 className="rounded-xl bg-[color:var(--color-primary)] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-strong)]"
               >
-                Satin Al
+                Satın Al
               </button>
               <Link
                 href={`/products/${product.slug}`}
                 className="inline-flex items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-white px-3 py-2 text-sm font-semibold transition hover:border-[color:var(--color-primary)]"
               >
-                Urune Goz At
+                Ürüne Göz At
               </Link>
             </div>
           </article>

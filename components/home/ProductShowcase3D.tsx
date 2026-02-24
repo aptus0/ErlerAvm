@@ -11,8 +11,8 @@ interface ProductShowcase3DProps {
 export function ProductShowcase3D({ products }: ProductShowcase3DProps) {
   return (
     <Sections
-      title="3D Urunler"
-      description="Sprint 2 icin @react-three/fiber entegrasyonuna hazir, V1de yer tutucu kartlarla geliyor."
+      title="3D Ürünler"
+      description="Sprint 2 için @react-three/fiber entegrasyonuna hazır, V1'de yer tutucu kartlarla geliyor."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (

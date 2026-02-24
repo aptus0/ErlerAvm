@@ -13,18 +13,18 @@ export default function HomePage() {
     <div>
       <Banner />
       <FeaturedProducts
-        title="One Cikanlar"
-        description="Anasayfada vitrine cikan urunler."
+        title="Öne Çıkanlar"
+        description="Anasayfada vitrine çıkan ürünler."
         products={featuredProducts}
       />
       <FeaturedProducts
         title="Yeni Gelenler"
-        description="Bu hafta kataloga eklenen urunler."
+        description="Bu hafta kataloğa eklenen ürünler."
         products={newProducts}
       />
       <FeaturedProducts
         title="Kampanyalar"
-        description="Fiyat avantaji sunan secili urunler."
+        description="Fiyat avantajı sunan seçili ürünler."
         products={campaignProducts}
       />
       <ProductShowcase3D products={productsWith3d} />

@@ -32,9 +32,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   return (
     <div>
       <section className="mb-8 rounded-3xl border border-[color:var(--color-border)] bg-white p-6 shadow-[0_14px_30px_rgba(15,23,42,0.06)]">
-        <h1 className="text-3xl font-bold">Urunler</h1>
+        <h1 className="text-3xl font-bold">Ürünler</h1>
         <p className="mt-2 text-sm text-[color:var(--color-muted)]">
-          Kategoriye gore filtrelenebilir, satin almaya hazir urun vitrini.
+          Kategoriye göre filtrelenebilir, satın almaya hazır ürün vitrini.
         </p>
       </section>
 
@@ -65,13 +65,13 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                 type="button"
                 className="rounded-xl bg-[color:var(--color-primary)] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[color:var(--color-primary-strong)]"
               >
-                Satin Al
+                Satın Al
               </button>
               <Link
                 href={`/products/${product.slug}`}
                 className="inline-flex items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-white px-3 py-2 text-sm font-semibold transition hover:border-[color:var(--color-primary)]"
               >
-                Urune Goz At
+                Ürüne Göz At
               </Link>
             </div>
           </article>
@@ -79,7 +79,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
         {!filteredProducts.length ? (
           <article className="rounded-2xl border border-[color:var(--color-border)] bg-white p-6 text-sm text-[color:var(--color-muted)]">
-            Filtreye uygun urun bulunamadi.
+            Filtreye uygun ürün bulunamadı.
           </article>
         ) : null}
       </section>
