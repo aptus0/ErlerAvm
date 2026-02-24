@@ -97,11 +97,12 @@ export function Navbar() {
     <nav
       ref={navRef}
       className={[
-        "sticky top-10 z-[70] transition-all duration-300",
+        "sticky z-[70] transition-all duration-300",
         isHome && !compactNav
           ? "border-b border-transparent bg-white/78 backdrop-blur-md"
           : "border-b border-[color:var(--color-border)] bg-white/96 shadow-[0_8px_18px_rgba(15,23,42,0.08)] backdrop-blur-md",
       ].join(" ")}
+      style={{ top: compactNav ? "2rem" : "2.5rem" }}
     >
       <div className={["container transition-all duration-300", compactNav ? "py-1.5" : "py-3"].join(" ")}>
         <div className="flex items-center gap-2">

@@ -57,7 +57,7 @@ const cardBadges = ["VISA", "Mastercard", "Maestro", "TROY"] as const;
 export function Footer() {
   return (
     <footer className="mt-16 border-t border-[color:var(--color-border)] bg-[#fafafa]">
-      <div className="container py-8 md:py-10">
+      <div className="container-wide py-8 md:py-10">
         <div className="overflow-hidden rounded-[2rem] border border-[color:var(--color-border)] bg-white shadow-[0_24px_44px_rgba(15,23,42,0.08)]">
           <section className="p-4 md:p-6 lg:p-8">
             <div className="grid gap-3 md:hidden">

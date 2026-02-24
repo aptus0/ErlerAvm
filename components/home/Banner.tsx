@@ -22,25 +22,26 @@ type FallingBall = {
 };
 
 const FALLING_BALLS: FallingBall[] = [
-  { id: 1, left: 5, size: 9, delay: 0.0, duration: 0.84, blur: 0, drift: -10, opacity: 0.86, color: "#ef4444", radius: "50%" },
-  { id: 2, left: 11, size: 12, delay: 0.04, duration: 0.92, blur: 0.4, drift: 14, opacity: 0.8, color: "#dc2626", radius: "56% 44% 50% 50%" },
-  { id: 3, left: 17, size: 7, delay: 0.05, duration: 0.8, blur: 0.5, drift: 9, opacity: 0.74, color: "#f87171", radius: "48% 52% 51% 49%" },
-  { id: 4, left: 25, size: 15, delay: 0.08, duration: 0.94, blur: 0.8, drift: -16, opacity: 0.72, color: "#ef4444", radius: "52% 48% 46% 54%" },
-  { id: 5, left: 32, size: 11, delay: 0.1, duration: 0.9, blur: 0.3, drift: 12, opacity: 0.82, color: "#dc2626", radius: "50%" },
-  { id: 6, left: 38, size: 8, delay: 0.12, duration: 0.86, blur: 0.2, drift: -8, opacity: 0.78, color: "#f87171", radius: "50% 47% 53% 50%" },
-  { id: 7, left: 45, size: 13, delay: 0.14, duration: 0.95, blur: 0.7, drift: 16, opacity: 0.74, color: "#ef4444", radius: "47% 53% 50% 50%" },
-  { id: 8, left: 52, size: 6, delay: 0.16, duration: 0.8, blur: 0.4, drift: -11, opacity: 0.66, color: "#f87171", radius: "50%" },
-  { id: 9, left: 59, size: 10, delay: 0.18, duration: 0.86, blur: 0.3, drift: 8, opacity: 0.8, color: "#dc2626", radius: "52% 48% 50% 50%" },
-  { id: 10, left: 66, size: 14, delay: 0.19, duration: 0.96, blur: 0.9, drift: -14, opacity: 0.7, color: "#ef4444", radius: "54% 46% 52% 48%" },
-  { id: 11, left: 72, size: 8, delay: 0.22, duration: 0.84, blur: 0.35, drift: 9, opacity: 0.76, color: "#f87171", radius: "50%" },
-  { id: 12, left: 79, size: 12, delay: 0.24, duration: 0.92, blur: 0.5, drift: -12, opacity: 0.73, color: "#dc2626", radius: "47% 53% 48% 52%" },
-  { id: 13, left: 84, size: 7, delay: 0.25, duration: 0.82, blur: 0.4, drift: 10, opacity: 0.71, color: "#f87171", radius: "50%" },
-  { id: 14, left: 90, size: 10, delay: 0.28, duration: 0.9, blur: 0.3, drift: -9, opacity: 0.82, color: "#ef4444", radius: "55% 45% 49% 51%" },
-  { id: 15, left: 95, size: 9, delay: 0.31, duration: 0.88, blur: 0.2, drift: 7, opacity: 0.79, color: "#dc2626", radius: "50%" },
+  { id: 1, left: 4, size: 10, delay: 0.0, duration: 0.92, blur: 0.2, drift: -12, opacity: 0.86, color: "#ef4444", radius: "50%" },
+  { id: 2, left: 10, size: 14, delay: 0.04, duration: 0.98, blur: 0.5, drift: 16, opacity: 0.82, color: "#dc2626", radius: "56% 44% 50% 50%" },
+  { id: 3, left: 16, size: 8, delay: 0.07, duration: 0.9, blur: 0.6, drift: 10, opacity: 0.76, color: "#f87171", radius: "48% 52% 51% 49%" },
+  { id: 4, left: 24, size: 16, delay: 0.1, duration: 1.02, blur: 0.9, drift: -18, opacity: 0.74, color: "#ef4444", radius: "52% 48% 46% 54%" },
+  { id: 5, left: 31, size: 12, delay: 0.12, duration: 0.96, blur: 0.4, drift: 13, opacity: 0.84, color: "#dc2626", radius: "50%" },
+  { id: 6, left: 37, size: 9, delay: 0.15, duration: 0.9, blur: 0.3, drift: -9, opacity: 0.78, color: "#f87171", radius: "50% 47% 53% 50%" },
+  { id: 7, left: 45, size: 14, delay: 0.17, duration: 1.04, blur: 0.8, drift: 18, opacity: 0.76, color: "#ef4444", radius: "47% 53% 50% 50%" },
+  { id: 8, left: 52, size: 7, delay: 0.2, duration: 0.86, blur: 0.5, drift: -12, opacity: 0.7, color: "#f87171", radius: "50%" },
+  { id: 9, left: 58, size: 11, delay: 0.22, duration: 0.92, blur: 0.35, drift: 9, opacity: 0.82, color: "#dc2626", radius: "52% 48% 50% 50%" },
+  { id: 10, left: 65, size: 15, delay: 0.24, duration: 1.04, blur: 1, drift: -15, opacity: 0.72, color: "#ef4444", radius: "54% 46% 52% 48%" },
+  { id: 11, left: 72, size: 9, delay: 0.27, duration: 0.9, blur: 0.4, drift: 10, opacity: 0.78, color: "#f87171", radius: "50%" },
+  { id: 12, left: 79, size: 13, delay: 0.3, duration: 0.98, blur: 0.6, drift: -13, opacity: 0.74, color: "#dc2626", radius: "47% 53% 48% 52%" },
+  { id: 13, left: 85, size: 8, delay: 0.33, duration: 0.88, blur: 0.45, drift: 11, opacity: 0.73, color: "#f87171", radius: "50%" },
+  { id: 14, left: 91, size: 11, delay: 0.35, duration: 0.95, blur: 0.35, drift: -10, opacity: 0.84, color: "#ef4444", radius: "55% 45% 49% 51%" },
+  { id: 15, left: 96, size: 10, delay: 0.38, duration: 0.94, blur: 0.3, drift: 8, opacity: 0.8, color: "#dc2626", radius: "50%" },
 ];
 
-const BALL_TRIGGER_SCROLL = 56;
-const MINI_HERO_TRIGGER_SCROLL = 280;
+const BALL_TRIGGER_SCROLL = 36;
+const HERO_COMPACT_SCROLL = 70;
+const MINI_HERO_TRIGGER_SCROLL = 230;
 
 export function Banner() {
   const megaColumns = useMemo(
@@ -51,23 +52,37 @@ export function Banner() {
   const [scrollY, setScrollY] = useState(0);
   const [showBallBurst, setShowBallBurst] = useState(false);
   const [ballBurstKey, setBallBurstKey] = useState(0);
-  const hasTriggeredBurstRef = useRef(false);
+
+  const crossedThresholdRef = useRef(false);
+  const burstTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
-    let burstTimer: number | undefined;
+    const triggerBallBurst = () => {
+      if (burstTimeoutRef.current) {
+        window.clearTimeout(burstTimeoutRef.current);
+      }
+
+      setBallBurstKey((prev) => prev + 1);
+      setShowBallBurst(true);
+
+      burstTimeoutRef.current = window.setTimeout(() => {
+        setShowBallBurst(false);
+      }, 1120);
+    };
 
     const handleScroll = () => {
       const nextY = window.scrollY;
       setScrollY(nextY);
 
-      if (nextY > BALL_TRIGGER_SCROLL && !hasTriggeredBurstRef.current) {
-        hasTriggeredBurstRef.current = true;
-        setBallBurstKey((key) => key + 1);
-        setShowBallBurst(true);
+      const passedTrigger = nextY > BALL_TRIGGER_SCROLL;
 
-        burstTimer = window.setTimeout(() => {
-          setShowBallBurst(false);
-        }, 900);
+      if (passedTrigger && !crossedThresholdRef.current) {
+        crossedThresholdRef.current = true;
+        triggerBallBurst();
+      }
+
+      if (!passedTrigger) {
+        crossedThresholdRef.current = false;
       }
     };
 
@@ -76,13 +91,13 @@ export function Banner() {
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (burstTimer) {
-        window.clearTimeout(burstTimer);
+      if (burstTimeoutRef.current) {
+        window.clearTimeout(burstTimeoutRef.current);
       }
     };
   }, []);
 
-  const compactHero = scrollY > BALL_TRIGGER_SCROLL;
+  const compactHero = scrollY > HERO_COMPACT_SCROLL;
   const showMiniHero = scrollY > MINI_HERO_TRIGGER_SCROLL;
 
   return (
@@ -92,14 +107,14 @@ export function Banner() {
           "brand-hero-grain relative left-1/2 w-screen -translate-x-1/2 overflow-hidden border-y border-[color:var(--color-border)]",
           "bg-[radial-gradient(circle_at_top_right,_#ffe7eb_0%,_#fff3f5_35%,_#ffffff_74%)]",
           "transition-[min-height,padding] duration-500",
-          compactHero ? "min-h-[440px] px-4 py-7" : "min-h-[calc(100vh-7.2rem)] px-4 py-10",
+          compactHero ? "min-h-[430px] px-4 py-7" : "min-h-[calc(100vh-7.2rem)] px-4 py-10",
         ].join(" ")}
       >
         <div className="pointer-events-none absolute -right-28 top-8 h-56 w-56 rounded-full bg-[#fca5a5]/40 blur-3xl" />
         <div className="pointer-events-none absolute -left-28 -top-10 h-64 w-64 rounded-full bg-[#fecdd3]/45 blur-3xl" />
 
         {showBallBurst ? (
-          <div key={ballBurstKey} className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-52 overflow-hidden">
+          <div key={ballBurstKey} className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-56 overflow-hidden">
             {FALLING_BALLS.map((ball) => (
               <span
                 key={`ball-${ballBurstKey}-${ball.id}`}
@@ -112,6 +127,7 @@ export function Banner() {
                   opacity: ball.opacity,
                   filter: `blur(${ball.blur}px)`,
                   background: ball.color,
+                  boxShadow: "0 8px 18px rgba(217,15,35,0.22)",
                   animationDelay: `${ball.delay}s`,
                   animationDuration: `${ball.duration}s`,
                   ["--ball-drift" as string]: `${ball.drift}px`,
@@ -124,8 +140,8 @@ export function Banner() {
         <div className="container relative z-10 grid gap-8 xl:grid-cols-[1.2fr_0.92fr] xl:items-center">
           <div
             className={[
-              "transition-all duration-500",
-              compactHero ? "translate-y-[-6px] opacity-95" : "translate-y-0 opacity-100",
+              "will-change-transform transition-all duration-500",
+              compactHero ? "translate-y-[-8px] opacity-95" : "translate-y-0 opacity-100",
             ].join(" ")}
           >
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-primary)]">ERLER AVM V1</p>
@@ -151,8 +167,8 @@ export function Banner() {
 
           <aside
             className={[
-              "rounded-3xl border border-[color:var(--color-border)] bg-white/90 p-5 shadow-[0_20px_36px_rgba(15,23,42,0.12)] backdrop-blur-sm transition-all duration-500",
-              compactHero ? "translate-y-[4px] opacity-95" : "translate-y-0 opacity-100",
+              "will-change-transform rounded-3xl border border-[color:var(--color-border)] bg-white/90 p-5 shadow-[0_20px_36px_rgba(15,23,42,0.12)] backdrop-blur-sm transition-all duration-500",
+              compactHero ? "translate-y-[6px] opacity-95" : "translate-y-0 opacity-100",
             ].join(" ")}
           >
             <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--color-primary)]">
@@ -185,10 +201,10 @@ export function Banner() {
 
       <div
         className={[
-          "pointer-events-none fixed inset-x-0 z-40 transition-all duration-300",
+          "pointer-events-none fixed inset-x-0 z-[65] transition-all duration-300",
           showMiniHero ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0",
         ].join(" ")}
-        style={{ top: "5.9rem" }}
+        style={{ top: "6.6rem" }}
       >
         <div className="container pointer-events-auto">
           <div className="flex items-center justify-between gap-3 rounded-2xl border border-[color:var(--color-border)] bg-white/95 px-4 py-3 shadow-[0_14px_30px_rgba(15,23,42,0.14)] backdrop-blur-md">

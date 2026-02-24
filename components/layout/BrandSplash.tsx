@@ -6,14 +6,20 @@ import { useEffect, useState } from "react";
 const SPLASH_STORAGE_KEY = "erler_brand_splash_seen_v2";
 
 export function BrandSplash() {
-  const [visible, setVisible] = useState(() => {
-    if (typeof window === "undefined") {
-      return true;
-    }
-
-    return window.sessionStorage.getItem(SPLASH_STORAGE_KEY) !== "1";
-  });
+  const [visible, setVisible] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+
+  useEffect(() => {
+    const frameId = window.requestAnimationFrame(() => {
+      if (window.sessionStorage.getItem(SPLASH_STORAGE_KEY) === "1") {
+        setVisible(false);
+      }
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+    };
+  }, []);
 
   useEffect(() => {
     if (!visible) {
