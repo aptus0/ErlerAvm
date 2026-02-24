@@ -1,38 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ERLER AVM
+Kirmizi-beyaz premium e-ticaret arayuzu. Next.js App Router tabanli, route-group mimarisiyla public/admin/auth alanlari ayrik olarak calisir.
 
-## Getting Started
+## Teknoloji (GIF)
+![Technology Stack](docs/gifs/tech-stack.gif)
 
-First, run the development server:
+- Framework: `Next.js 16` (App Router)
+- UI: `React 19` + `TypeScript` + `Tailwind CSS v4`
+- 3D: `three.js` + `@react-three/fiber` + `@react-three/drei`
+- Ikonlar: `@heroicons/react`
+- Full-stack endpointler: `app/api/*`
+- Performans: lazy 3D mount + image format optimizasyonu + web vitals reporter
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Mimari Yapi (GIF)
+![Architecture](docs/gifs/architecture.gif)
+![Runtime Flow](docs/gifs/runtime-flow.gif)
+
+### Route Group Ayrimi
+```text
+app/
+  (public)/        -> storefront
+  (auth)/          -> login/auth ekranlari
+  (admin)/admin/   -> admin panel
+  api/             -> full-stack endpointler
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Katmanlar
+- `components/*`: layout, home, checkout, product, ui
+- `lib/*`: constants, domain mock data, format, commerce, auth/db baglantilari
+- `middleware`: admin koruma ve route kontrolleri
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Arayuz Ornekleri (GIF)
+![Banner Preview](docs/gifs/banner-preview.gif)
+![Product Preview](docs/gifs/product-preview.gif)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Lokal Calistirma
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Build kontrol:
+```bash
+npm run lint
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Versioning ve Tag Politikasi
+Her guncelleme:
+1. `patch` versiyon bump
+2. zengin commit mesaji
+3. annoted tag
+4. `main` + tag push
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# ErlerAvm
-# ErlerAvm
+### Guncel Tag Seti
+`v0.2.0, v0.2.1, v0.2.2, v0.2.3, v0.2.4, v0.2.5, v0.2.6, v0.2.7, v0.2.8, v0.2.9, v0.2.10, v0.2.11, v0.2.12, v0.2.13, v0.2.14, v0.2.15, v0.2.16, v0.2.17, v0.2.18, v0.2.19`

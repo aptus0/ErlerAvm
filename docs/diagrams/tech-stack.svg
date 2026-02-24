@@ -1,0 +1,39 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1280' height='720' viewBox='0 0 1280 720'>
+  <defs>
+    <linearGradient id='bg' x1='0' x2='1' y1='0' y2='1'>
+      <stop offset='0%' stop-color='#0f172a'/>
+      <stop offset='100%' stop-color='#1e293b'/>
+    </linearGradient>
+    <linearGradient id='card' x1='0' x2='1' y1='0' y2='1'>
+      <stop offset='0%' stop-color='#111827'/>
+      <stop offset='100%' stop-color='#1f2937'/>
+    </linearGradient>
+  </defs>
+  <rect width='1280' height='720' fill='url(#bg)'/>
+  <text x='640' y='90' fill='#f8fafc' text-anchor='middle' font-size='48' font-family='Arial' font-weight='700'>ERLER AVM - Technology Stack</text>
+  <g font-family='Arial' font-size='30' fill='#e5e7eb'>
+    <rect x='120' y='150' rx='24' ry='24' width='300' height='110' fill='url(#card)' stroke='#334155'/>
+    <text x='270' y='215' text-anchor='middle'>Next.js 16 (App)</text>
+
+    <rect x='490' y='150' rx='24' ry='24' width='300' height='110' fill='url(#card)' stroke='#334155'/>
+    <text x='640' y='215' text-anchor='middle'>React 19 + TS</text>
+
+    <rect x='860' y='150' rx='24' ry='24' width='300' height='110' fill='url(#card)' stroke='#334155'/>
+    <text x='1010' y='215' text-anchor='middle'>Tailwind v4</text>
+
+    <rect x='120' y='310' rx='24' ry='24' width='300' height='110' fill='url(#card)' stroke='#334155'/>
+    <text x='270' y='375' text-anchor='middle'>R3F + Three.js</text>
+
+    <rect x='490' y='310' rx='24' ry='24' width='300' height='110' fill='url(#card)' stroke='#334155'/>
+    <text x='640' y='375' text-anchor='middle'>Heroicons</text>
+
+    <rect x='860' y='310' rx='24' ry='24' width='300' height='110' fill='url(#card)' stroke='#334155'/>
+    <text x='1010' y='375' text-anchor='middle'>API Routes</text>
+
+    <rect x='305' y='470' rx='24' ry='24' width='300' height='110' fill='url(#card)' stroke='#334155'/>
+    <text x='455' y='535' text-anchor='middle'>Middleware Guard</text>
+
+    <rect x='675' y='470' rx='24' ry='24' width='300' height='110' fill='url(#card)' stroke='#334155'/>
+    <text x='825' y='535' text-anchor='middle'>Core Web Vitals</text>
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1280' height='720' viewBox='0 0 1280 720'>
+  <defs>
+    <linearGradient id='bg2' x1='0' x2='1' y1='0' y2='1'>
+      <stop offset='0%' stop-color='#7f1d1d'/>
+      <stop offset='100%' stop-color='#450a0a'/>
+    </linearGradient>
+    <linearGradient id='node' x1='0' x2='1' y1='0' y2='1'>
+      <stop offset='0%' stop-color='#fee2e2'/>
+      <stop offset='100%' stop-color='#fff7ed'/>
+    </linearGradient>
+  </defs>
+  <rect width='1280' height='720' fill='url(#bg2)'/>
+  <text x='640' y='86' fill='#fff' text-anchor='middle' font-size='44' font-family='Arial' font-weight='700'>App Router Architecture</text>
+
+  <g stroke='#fecaca' stroke-width='2' fill='none' opacity='0.75'>
+    <path d='M260 246 H470'/>
+    <path d='M640 246 H850'/>
+    <path d='M260 470 H470'/>
+    <path d='M640 470 H850'/>
+    <path d='M640 290 V426'/>
+  </g>
+
+  <g font-family='Arial' font-size='30' fill='#111827'>
+    <rect x='90' y='180' rx='24' ry='24' width='300' height='130' fill='url(#node)'/>
+    <text x='240' y='237' text-anchor='middle' font-weight='700'>Route Group</text>
+    <text x='240' y='277' text-anchor='middle'>(public)</text>
+
+    <rect x='470' y='180' rx='24' ry='24' width='340' height='130' fill='url(#node)'/>
+    <text x='640' y='237' text-anchor='middle' font-weight='700'>Shared Layer</text>
+    <text x='640' y='277' text-anchor='middle'>components + lib</text>
+
+    <rect x='890' y='180' rx='24' ry='24' width='300' height='130' fill='url(#node)'/>
+    <text x='1040' y='237' text-anchor='middle' font-weight='700'>Route Group</text>
+    <text x='1040' y='277' text-anchor='middle'>(admin)</text>
+
+    <rect x='90' y='404' rx='24' ry='24' width='300' height='130' fill='url(#node)'/>
+    <text x='240' y='461' text-anchor='middle' font-weight='700'>Route Group</text>
+    <text x='240' y='501' text-anchor='middle'>(auth)</text>
+
+    <rect x='470' y='404' rx='24' ry='24' width='340' height='130' fill='url(#node)'/>
+    <text x='640' y='461' text-anchor='middle' font-weight='700'>API Routes</text>
+    <text x='640' y='501' text-anchor='middle'>/api/* full-stack</text>
+
+    <rect x='890' y='404' rx='24' ry='24' width='300' height='130' fill='url(#node)'/>
+    <text x='1040' y='461' text-anchor='middle' font-weight='700'>Middleware</text>
+    <text x='1040' y='501' text-anchor='middle'>admin protection</text>
+  </g>
+</svg>
