@@ -1,4 +1,4 @@
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { CheckCircleIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 import { ADDRESS_ITEMS } from "@/lib/account";
 
@@ -12,15 +12,10 @@ interface AddressSelectorProps {
 export function AddressSelector({ selectedAddressId, onSelectAddress, note, onNoteChange }: AddressSelectorProps) {
   return (
     <section className="rounded-3xl border border-[color:var(--color-border)] bg-white p-5 shadow-[0_12px_25px_rgba(15,23,42,0.05)]">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-xl font-bold">1. Teslimat Bilgileri</h2>
-        <button
-          type="button"
-          className="inline-flex items-center gap-1 rounded-xl border border-[color:var(--color-border)] bg-white px-3 py-2 text-sm font-semibold hover:border-[color:var(--color-primary)]"
-        >
-          <PlusIcon className="size-4" /> Yeni adres ekle
-        </button>
-      </div>
+      <h2 className="text-xl font-bold">1. Teslimat Bilgileri</h2>
+      <p className="mt-1 text-sm text-[color:var(--color-muted)]">
+        Kayitli adreslerinizden birini secin veya yeni adres ekleyin.
+      </p>
 
       <div className="mt-4 grid gap-3">
         {ADDRESS_ITEMS.map((address) => {
@@ -38,20 +33,41 @@ export function AddressSelector({ selectedAddressId, onSelectAddress, note, onNo
                   : "border-[color:var(--color-border)] bg-white hover:border-[color:var(--color-primary)]/50",
               ].join(" ")}
             >
-              <div className="flex flex-wrap items-center gap-2">
-                <p className="font-semibold">{address.title}</p>
-                {address.isDefault ? (
-                  <span className="rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-semibold text-emerald-700">Varsayilan</span>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <p className="font-semibold">{address.title}</p>
+                  {address.isDefault ? (
+                    <span className="rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-semibold text-emerald-700">Varsayılan</span>
+                  ) : null}
+                </div>
+
+                {selected ? (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-[color:var(--color-primary)]/10 px-2 py-1 text-xs font-semibold text-[color:var(--color-primary)]">
+                    <CheckCircleIcon className="size-4" />
+                    Seçili
+                  </span>
                 ) : null}
               </div>
+
               <p className="mt-2 text-sm">{address.fullName}</p>
               <p className="text-sm text-[color:var(--color-muted)]">{address.phone}</p>
               <p className="mt-1 text-sm text-[color:var(--color-muted)]">
-                {address.line1}, {address.district} / {address.city}
+                {address.district} / {address.city}
               </p>
+              <p className="text-xs text-[color:var(--color-muted)]">{address.line1}</p>
             </button>
           );
         })}
+
+        <button
+          type="button"
+          className="flex items-center gap-2 rounded-2xl border border-dashed border-[color:var(--color-border)] bg-[#fffafa] px-4 py-4 text-left text-sm font-semibold text-[color:var(--color-muted)] transition hover:border-[color:var(--color-primary)] hover:text-[color:var(--color-primary)]"
+        >
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[color:var(--color-border)] bg-white">
+            <PlusIcon className="size-4" />
+          </span>
+          Yeni adres ekle
+        </button>
       </div>
 
       <label className="mt-4 block text-sm font-medium text-[color:var(--color-foreground)]">

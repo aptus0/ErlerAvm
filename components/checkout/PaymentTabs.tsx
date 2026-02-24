@@ -1,4 +1,4 @@
-import { ShieldCheckIcon } from "@heroicons/react/24/outline";
+import { CheckBadgeIcon, CreditCardIcon, LockClosedIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 
 import { PAYMENT_METHODS } from "@/lib/account";
 import {
@@ -19,6 +19,15 @@ interface PaymentTabsProps {
   onCorporateTaxIdChange: (value: string) => void;
 }
 
+const TRUST_ITEMS = [
+  { label: "SSL Guvenligi", icon: LockClosedIcon },
+  { label: "3D Secure", icon: ShieldCheckIcon },
+  { label: "Guvenli Odeme", icon: CheckBadgeIcon },
+  { label: "Kolay Iade", icon: CreditCardIcon },
+] as const;
+
+const CARD_BRANDS = ["VISA", "Mastercard", "TROY"] as const;
+
 export function PaymentTabs({
   activeTab,
   onTabChange,
@@ -34,8 +43,25 @@ export function PaymentTabs({
   return (
     <section className="rounded-3xl border border-[color:var(--color-border)] bg-white p-5 shadow-[0_12px_25px_rgba(15,23,42,0.05)]">
       <h2 className="text-xl font-bold">2. Odeme</h2>
+      <p className="mt-1 text-sm text-[color:var(--color-muted)]">Guvenli odeme seceneginizi belirleyin.</p>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-4 grid gap-2 sm:grid-cols-2">
+        {TRUST_ITEMS.map((item) => {
+          const Icon = item.icon;
+
+          return (
+            <p
+              key={item.label}
+              className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--color-border)] bg-[#fffafa] px-3 py-2 text-xs font-semibold text-[color:var(--color-muted)]"
+            >
+              <Icon className="size-4 text-[color:var(--color-primary)]" />
+              {item.label}
+            </p>
+          );
+        })}
+      </div>
+
+      <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-3">
         {CHECKOUT_PAYMENT_TABS.map((tab) => (
           <button
             key={tab.id}
@@ -45,7 +71,7 @@ export function PaymentTabs({
               "rounded-xl border px-3 py-2 text-sm font-semibold transition",
               activeTab === tab.id
                 ? "border-[color:var(--color-primary)] bg-[color:var(--color-primary)] text-white"
-                : "border-[color:var(--color-border)] bg-white text-[color:var(--color-muted)]",
+                : "border-[color:var(--color-border)] bg-white text-[color:var(--color-muted)] hover:border-[color:var(--color-primary)]/40",
             ].join(" ")}
           >
             {tab.title}
@@ -84,9 +110,22 @@ export function PaymentTabs({
             ))}
           </div>
 
+          <div className="flex flex-wrap items-center gap-2 rounded-xl border border-[color:var(--color-border)] bg-[#fffafa] px-3 py-2">
+            {CARD_BRANDS.map((brand) => (
+              <span
+                key={brand}
+                className="rounded-md border border-[color:var(--color-border)] bg-white px-2 py-1 text-[11px] font-semibold text-[color:var(--color-muted)]"
+              >
+                {brand}
+              </span>
+            ))}
+            <p className="text-xs text-[color:var(--color-muted)]">Guvenilir odeme altyapisi</p>
+          </div>
+
           <div className="grid gap-3 md:grid-cols-2">
             <input
               placeholder="Kart numarasi"
+              inputMode="numeric"
               className="h-11 rounded-xl border border-[color:var(--color-border)] px-3 text-sm outline-none focus:border-[color:var(--color-primary)]"
             />
             <input
@@ -95,10 +134,12 @@ export function PaymentTabs({
             />
             <input
               placeholder="Son kullanma (AA/YY)"
+              inputMode="numeric"
               className="h-11 rounded-xl border border-[color:var(--color-border)] px-3 text-sm outline-none focus:border-[color:var(--color-primary)]"
             />
             <input
               placeholder="CVV"
+              inputMode="numeric"
               className="h-11 rounded-xl border border-[color:var(--color-border)] px-3 text-sm outline-none focus:border-[color:var(--color-primary)]"
             />
           </div>
