@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber";
 
 type ProductViewer3DProps = {
   productSlug: string;
+  className?: string;
 };
 
 function LaptopModel() {
@@ -173,9 +174,16 @@ function ModelBySlug({ productSlug }: ProductViewer3DProps) {
   return <DefaultModel />;
 }
 
-export function ProductViewer3D({ productSlug }: ProductViewer3DProps) {
+export function ProductViewer3D({ productSlug, className }: ProductViewer3DProps) {
   return (
-    <div className="h-[360px] w-full bg-[radial-gradient(circle_at_top,_#fff7f8,_#ffe4e6,_#fff1f2)]">
+    <div
+      className={[
+        "w-full bg-[radial-gradient(circle_at_top,_#fff7f8,_#ffe4e6,_#fff1f2)]",
+        className ?? "h-[360px]",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <Canvas camera={{ position: [2.8, 1.8, 3.2], fov: 45 }} shadows>
         <color attach="background" args={["#fff7f8"]} />
         <ambientLight intensity={0.72} />

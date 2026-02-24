@@ -1,12 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { SparklesIcon } from "@heroicons/react/24/outline";
 
 import { Button } from "@/components/ui/Button";
-import { NAV_MENU } from "@/lib/constants";
+import { NAV_MENU, PRODUCTS } from "@/lib/constants";
+import { formatTry } from "@/lib/format";
 
 type FallingBall = {
   id: number;
@@ -43,18 +45,35 @@ const BALL_TRIGGER_SCROLL = 36;
 const HERO_COMPACT_SCROLL = 70;
 const MINI_HERO_TRIGGER_SCROLL = 230;
 
+const ProductViewer3D = dynamic(
+  () => import("@/components/product/ProductViewer3D").then((module) => module.ProductViewer3D),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-[240px] items-center justify-center bg-[radial-gradient(circle_at_top,_#fff7f8,_#ffe4e6,_#fff1f2)] text-xs font-semibold text-[color:var(--color-muted)]">
+        3D sahne yukleniyor...
+      </div>
+    ),
+  },
+);
+
 export function Banner() {
   const megaColumns = useMemo(
     () => NAV_MENU.find((item) => item.id === "products" && item.type === "mega")?.mega?.columns ?? [],
     [],
   );
+  const banner3dProducts = useMemo(() => PRODUCTS.filter((product) => product.has3d).slice(0, 4), []);
 
   const [scrollY, setScrollY] = useState(0);
   const [showBallBurst, setShowBallBurst] = useState(false);
   const [ballBurstKey, setBallBurstKey] = useState(0);
+  const [active3dSlug, setActive3dSlug] = useState(banner3dProducts[0]?.slug ?? "atlas-pro-laptop");
 
   const crossedThresholdRef = useRef(false);
   const burstTimeoutRef = useRef<number | null>(null);
+
+  const active3dProduct =
+    banner3dProducts.find((product) => product.slug === active3dSlug) ?? banner3dProducts[0] ?? null;
 
   useEffect(() => {
     const triggerBallBurst = () => {
@@ -171,29 +190,72 @@ export function Banner() {
               compactHero ? "translate-y-[6px] opacity-95" : "translate-y-0 opacity-100",
             ].join(" ")}
           >
-            <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--color-primary)]">
-              <SparklesIcon className="size-4" /> Mega Menu Hizli Erisim
-            </p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-3 xl:grid-cols-1 2xl:grid-cols-3">
-              {megaColumns.map((column) => (
-                <div
-                  key={column.title}
-                  className="rounded-xl border border-[color:var(--color-border)] bg-[linear-gradient(145deg,_#fff8f8,_#ffffff)] p-3"
-                >
-                  <p className="text-xs font-bold uppercase tracking-wide text-[color:var(--color-muted)]">{column.title}</p>
-                  <div className="mt-2 grid gap-1">
-                    {column.links.map((link, linkIndex) => (
-                      <Link
-                        key={`${column.title}-${link.title}-${linkIndex}`}
-                        href={link.href}
-                        className="rounded-lg px-2 py-1 text-sm font-medium hover:bg-[#fff1f2] hover:text-[color:var(--color-primary)]"
+            <div className="space-y-4">
+              {active3dProduct ? (
+                <div className="rounded-2xl border border-[color:var(--color-border)] bg-[linear-gradient(145deg,_#fff8f8,_#ffffff)] p-3">
+                  <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--color-primary)]">
+                    <SparklesIcon className="size-4" /> Banner 3D Urun Vitrini
+                  </p>
+                  <div className="mt-3 overflow-hidden rounded-xl border border-[color:var(--color-border)]">
+                    <ProductViewer3D productSlug={active3dProduct.slug} className="h-[240px]" />
+                  </div>
+
+                  <div className="mt-3 flex items-center justify-between gap-2">
+                    <div>
+                      <p className="text-sm font-bold text-[color:var(--color-foreground)]">{active3dProduct.name}</p>
+                      <p className="text-xs text-[color:var(--color-muted)]">{active3dProduct.category}</p>
+                    </div>
+                    <p className="text-sm font-bold text-[color:var(--color-primary)]">{formatTry(active3dProduct.price)}</p>
+                  </div>
+
+                  <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
+                    {banner3dProducts.map((product) => (
+                      <button
+                        key={`banner-3d-${product.slug}`}
+                        type="button"
+                        onClick={() => setActive3dSlug(product.slug)}
+                        className={[
+                          "rounded-lg border px-2 py-2 text-left text-xs font-semibold transition",
+                          active3dSlug === product.slug
+                            ? "border-[color:var(--color-primary)] bg-[#ffe4e6] text-[color:var(--color-primary)]"
+                            : "border-[color:var(--color-border)] bg-white hover:border-[color:var(--color-primary)]",
+                        ].join(" ")}
                       >
-                        {link.title}
-                      </Link>
+                        {product.name}
+                      </button>
                     ))}
                   </div>
+
+                  <Link href={`/products/${active3dProduct.slug}`} className="mt-3 inline-flex w-full">
+                    <Button className="h-10 w-full text-white">3D Urunu Incele</Button>
+                  </Link>
                 </div>
-              ))}
+
+              ) : null}
+
+              <div className="rounded-2xl border border-[color:var(--color-border)] bg-[linear-gradient(145deg,_#fff8f8,_#ffffff)] p-3">
+                <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--color-primary)]">
+                  <SparklesIcon className="size-4" /> Mega Menu Hizli Erisim
+                </p>
+                <div className="mt-3 grid gap-3 sm:grid-cols-3 xl:grid-cols-1 2xl:grid-cols-3">
+                  {megaColumns.map((column) => (
+                    <div key={column.title} className="rounded-xl border border-[color:var(--color-border)] bg-white p-3">
+                      <p className="text-xs font-bold uppercase tracking-wide text-[color:var(--color-muted)]">{column.title}</p>
+                      <div className="mt-2 grid gap-1">
+                        {column.links.map((link, linkIndex) => (
+                          <Link
+                            key={`${column.title}-${link.title}-${linkIndex}`}
+                            href={link.href}
+                            className="rounded-lg px-2 py-1 text-sm font-medium hover:bg-[#fff1f2] hover:text-[color:var(--color-primary)]"
+                          >
+                            {link.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </aside>
         </div>
