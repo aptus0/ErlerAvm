@@ -100,14 +100,14 @@ export function Navbar() {
       className={[
         "sticky z-[70] transition-all duration-300",
         isHome && !compactNav
-          ? "border-b border-transparent bg-white/78 backdrop-blur-md"
-          : "border-b border-[color:var(--color-border)] bg-white/96 shadow-[0_8px_18px_rgba(15,23,42,0.08)] backdrop-blur-md",
+          ? "border-b border-transparent bg-[color:var(--color-surface-overlay-soft)] backdrop-blur-md"
+          : "border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-overlay-strong)] shadow-[0_8px_18px_var(--color-shadow-soft)] backdrop-blur-md",
       ].join(" ")}
       style={{ top: compactNav ? "2rem" : "2.5rem" }}
     >
       <div className={["container transition-all duration-300", compactNav ? "py-1.5" : "py-3"].join(" ")}>
         <div className="flex items-center gap-2">
-          <Link href="/" className="inline-flex items-center gap-2 rounded-xl px-2 py-1 hover:bg-[#fff4f4]">
+          <Link href="/" className="inline-flex items-center gap-2 rounded-xl px-2 py-1 hover:bg-[color:var(--color-surface-soft)]">
             <Image
               src="/logo/erler-logo.png"
               alt="ERLER AVM logo"
@@ -129,7 +129,7 @@ export function Navbar() {
             <Link
               href="/account"
               onClick={() => setMobileOpen(false)}
-              className="inline-flex h-10 items-center gap-1 rounded-xl border border-[color:var(--color-border)] bg-white px-3 text-sm font-semibold hover:border-[color:var(--color-primary)] hover:text-[color:var(--color-primary)]"
+              className="inline-flex h-10 items-center gap-1 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-3 text-sm font-semibold hover:border-[color:var(--color-primary)] hover:text-[color:var(--color-primary)]"
             >
               <UserCircleIcon className="size-5" />
               <span className="hidden sm:inline">Hesabım</span>
@@ -157,7 +157,7 @@ export function Navbar() {
 
         <NavSearch className="mt-3 lg:hidden" />
 
-        <div className="mt-3 hidden rounded-2xl border border-[color:var(--color-border)] bg-[#fffafa] px-2 py-1 md:block">
+        <div className="mt-3 hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-soft)] px-2 py-1 md:block">
           <ul className="flex min-h-12 flex-wrap items-center gap-1">
             {items.map((item) => {
               const Icon = menuIconMap[item.id] ?? Squares2X2Icon;
@@ -188,8 +188,8 @@ export function Navbar() {
                       href={item.href}
                       className={[
                         "inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold transition",
-                        "hover:bg-white hover:text-[color:var(--color-primary)]",
-                        active ? "bg-white text-[color:var(--color-primary)]" : "",
+                        "hover:bg-[color:var(--color-surface)] hover:text-[color:var(--color-primary)]",
+                        active ? "bg-[color:var(--color-surface)] text-[color:var(--color-primary)]" : "",
                       ]
                         .filter(Boolean)
                         .join(" ")}
@@ -202,7 +202,7 @@ export function Navbar() {
                     {itemHasSubmenu ? (
                       <button
                         type="button"
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-[color:var(--color-muted)] transition hover:bg-white hover:text-[color:var(--color-primary)]"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-[color:var(--color-muted)] transition hover:bg-[color:var(--color-surface)] hover:text-[color:var(--color-primary)]"
                         aria-label={`${item.title} alt menüsü`}
                         aria-expanded={isOpen}
                         onClick={() => setOpenMenuId((current) => (current === item.id ? null : item.id))}
@@ -223,7 +223,7 @@ export function Navbar() {
                     item.children?.length ? (
                       <div
                         className={[
-                          "absolute left-0 top-[calc(100%+0.4rem)] z-[120] w-64 rounded-2xl border border-[color:var(--color-border)] bg-white p-2 shadow-[0_18px_32px_rgba(15,23,42,0.12)]",
+                          "absolute left-0 top-[calc(100%+0.4rem)] z-[120] w-64 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-elevated)] p-2 shadow-[0_18px_32px_var(--color-shadow-soft)]",
                           "origin-top transition-all duration-200 ease-out",
                           panelVisibilityClass,
                         ]
@@ -234,7 +234,7 @@ export function Navbar() {
                           <Link
                             key={`${item.id}-${child.title}-${child.href}-${childIndex}`}
                             href={child.href}
-                            className="flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-[#fff4f4]"
+                            className="flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-[color:var(--color-surface-soft)]"
                             onClick={() => setOpenMenuId(null)}
                           >
                             <span>{child.title}</span>
@@ -248,7 +248,7 @@ export function Navbar() {
                   {item.type === "mega" && item.mega?.columns.length ? (
                     <div
                       className={[
-                        "absolute left-0 top-[calc(100%+0.4rem)] z-[120] w-[min(92vw,820px)] rounded-2xl border border-[color:var(--color-border)] bg-white p-5 shadow-[0_22px_36px_rgba(15,23,42,0.14)]",
+                        "absolute left-0 top-[calc(100%+0.4rem)] z-[120] w-[min(92vw,820px)] rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-elevated)] p-5 shadow-[0_22px_36px_var(--color-shadow-soft)]",
                         "origin-top transition-all duration-200 ease-out",
                         panelVisibilityClass,
                       ]
@@ -266,7 +266,7 @@ export function Navbar() {
                                 <Link
                                   key={`${item.id}-${column.title}-${link.title}-${link.href}-${linkIndex}`}
                                   href={link.href}
-                                  className="flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-[#fff4f4]"
+                                  className="flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-[color:var(--color-surface-soft)]"
                                   onClick={() => setOpenMenuId(null)}
                                 >
                                   <span>{link.title}</span>
@@ -286,14 +286,14 @@ export function Navbar() {
         </div>
 
         {mobileOpen ? (
-          <div className="mt-3 rounded-2xl border border-[color:var(--color-border)] bg-white p-3 shadow-[0_16px_28px_rgba(15,23,42,0.08)] md:hidden">
+          <div className="mt-3 rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-3 shadow-[0_16px_28px_var(--color-shadow-soft)] md:hidden">
             <div className="grid gap-1">
               {items.map((item) => {
                 const itemHasSubmenu = hasSubmenu(item);
                 const isExpanded = Boolean(mobileExpanded[item.id]);
 
                 return (
-                  <div key={`mobile-${item.id}`} className="rounded-xl border border-[color:var(--color-border)] bg-[#fffafa]">
+                  <div key={`mobile-${item.id}`} className="rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-soft)]">
                     <div className="flex items-center">
                       <Link
                         href={item.href}

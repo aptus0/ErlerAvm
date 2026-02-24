@@ -28,8 +28,8 @@ export function Header() {
       className={[
         "sticky top-0 z-[80] transition-all duration-300",
         isHome && !scrolled
-          ? "border-b border-transparent bg-white/72 backdrop-blur-md"
-          : "border-b border-[color:var(--color-border)] bg-white/95 shadow-[0_8px_18px_rgba(15,23,42,0.08)] backdrop-blur-lg",
+          ? "border-b border-transparent bg-[color:var(--color-surface-overlay-soft)] backdrop-blur-md"
+          : "border-b border-[color:var(--color-border)] bg-[color:var(--color-surface-overlay-strong)] shadow-[0_8px_18px_var(--color-shadow-soft)] backdrop-blur-lg",
       ].join(" ")}
     >
       <div

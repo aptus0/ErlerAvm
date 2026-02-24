@@ -3,23 +3,39 @@
 :root {
   --color-background: #ffffff;
   --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-surface-soft: #fff8f9;
+  --color-surface-soft-2: #fff2f4;
+  --color-surface-muted: #f7f8fa;
+  --color-surface-overlay-soft: rgba(255, 255, 255, 0.78);
+  --color-surface-overlay-strong: rgba(255, 255, 255, 0.96);
   --color-foreground: #18181b;
   --color-muted: #6b7280;
   --color-primary: #d90f23;
   --color-primary-strong: #af0d1c;
   --color-border: #f1d2d6;
+  --color-shadow-soft: rgba(15, 23, 42, 0.08);
+  --gradient-surface-soft: linear-gradient(150deg, #fff7f8, #ffffff);
   --container-width: 1240px;
 }
 
 html[data-theme="dark"],
 html.dark {
-  --color-background: #0f141c;
-  --color-surface: #151b24;
-  --color-foreground: #f3f4f6;
-  --color-muted: #a2adbb;
+  --color-background: #0c1118;
+  --color-surface: #151d27;
+  --color-surface-elevated: #1a2431;
+  --color-surface-soft: #1d2836;
+  --color-surface-soft-2: #222f3f;
+  --color-surface-muted: #111a24;
+  --color-surface-overlay-soft: rgba(21, 29, 39, 0.84);
+  --color-surface-overlay-strong: rgba(21, 29, 39, 0.96);
+  --color-foreground: #e8edf6;
+  --color-muted: #9cabbd;
   --color-primary: #e11d35;
   --color-primary-strong: #be1230;
-  --color-border: #2a3444;
+  --color-border: #2f3c4f;
+  --color-shadow-soft: rgba(2, 8, 20, 0.42);
+  --gradient-surface-soft: linear-gradient(150deg, #1b2532, #141c27);
 }
 
 @theme inline {
@@ -53,6 +69,7 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), "Segoe UI", sans-serif;
+  transition: background-color 0.22s ease, color 0.22s ease;
 }
 
 a {
@@ -85,6 +102,71 @@ a {
 .bg-\[color\:var\(--color-primary\)\],
 .bg-\[color\:var\(--color-primary-strong\)\] {
   color: #fff !important;
+}
+
+html[data-theme="dark"] .bg-white,
+html.dark .bg-white {
+  background-color: var(--color-surface) !important;
+}
+
+html[data-theme="dark"] .bg-white\/96,
+html[data-theme="dark"] .bg-white\/95,
+html[data-theme="dark"] .bg-white\/90,
+html[data-theme="dark"] .bg-white\/88,
+html[data-theme="dark"] .bg-white\/85,
+html[data-theme="dark"] .bg-white\/78,
+html[data-theme="dark"] .bg-white\/75,
+html[data-theme="dark"] .bg-white\/72,
+html.dark .bg-white\/96,
+html.dark .bg-white\/95,
+html.dark .bg-white\/90,
+html.dark .bg-white\/88,
+html.dark .bg-white\/85,
+html.dark .bg-white\/78,
+html.dark .bg-white\/75,
+html.dark .bg-white\/72 {
+  background-color: var(--color-surface-overlay-strong) !important;
+}
+
+html[data-theme="dark"] .bg-\[\#fafafa\],
+html[data-theme="dark"] .bg-\[\#fffafa\],
+html[data-theme="dark"] .bg-\[\#fff9f9\],
+html[data-theme="dark"] .bg-\[\#fff8f8\],
+html[data-theme="dark"] .bg-\[\#fff7f8\],
+html[data-theme="dark"] .bg-\[\#fff6f7\],
+html[data-theme="dark"] .bg-\[\#fff4f4\],
+html[data-theme="dark"] .bg-\[\#fff3f4\],
+html[data-theme="dark"] .bg-\[\#fff2f3\],
+html[data-theme="dark"] .bg-\[\#fff2f4\],
+html[data-theme="dark"] .bg-\[\#fff1f2\],
+html.dark .bg-\[\#fafafa\],
+html.dark .bg-\[\#fffafa\],
+html.dark .bg-\[\#fff9f9\],
+html.dark .bg-\[\#fff8f8\],
+html.dark .bg-\[\#fff7f8\],
+html.dark .bg-\[\#fff6f7\],
+html.dark .bg-\[\#fff4f4\],
+html.dark .bg-\[\#fff3f4\],
+html.dark .bg-\[\#fff2f3\],
+html.dark .bg-\[\#fff2f4\],
+html.dark .bg-\[\#fff1f2\] {
+  background-image: none !important;
+  background-color: var(--color-surface-soft) !important;
+}
+
+html[data-theme="dark"] .shadow-\[0_8px_18px_rgba\(15\,23\,42\,0\.08\)\],
+html[data-theme="dark"] .shadow-\[0_8px_20px_rgba\(15\,23\,42\,0\.06\)\],
+html[data-theme="dark"] .shadow-\[0_16px_28px_rgba\(15\,23\,42\,0\.08\)\],
+html[data-theme="dark"] .shadow-\[0_18px_32px_rgba\(15\,23\,42\,0\.12\)\],
+html[data-theme="dark"] .shadow-\[0_22px_36px_rgba\(15\,23\,42\,0\.14\)\],
+html[data-theme="dark"] .shadow-\[0_24px_44px_rgba\(15\,23\,42\,0\.08\)\],
+html.dark .shadow-\[0_8px_18px_rgba\(15\,23\,42\,0\.08\)\],
+html.dark .shadow-\[0_8px_20px_rgba\(15\,23\,42\,0\.06\)\],
+html.dark .shadow-\[0_16px_28px_rgba\(15\,23\,42\,0\.08\)\],
+html.dark .shadow-\[0_18px_32px_rgba\(15\,23\,42\,0\.12\)\],
+html.dark .shadow-\[0_22px_36px_rgba\(15\,23\,42\,0\.14\)\],
+html.dark .shadow-\[0_24px_44px_rgba\(15\,23\,42\,0\.08\)\] {
+  box-shadow: 0 12px 28px var(--color-shadow-soft) !important;
 }
 
 .brand-hero-grain::before {

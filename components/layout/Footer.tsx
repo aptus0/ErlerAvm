@@ -56,15 +56,15 @@ const cardBadges = ["VISA", "Mastercard", "Maestro", "TROY"] as const;
 
 export function Footer() {
   return (
-    <footer className="mt-16 border-t border-[color:var(--color-border)] bg-[#fafafa]">
+    <footer className="mt-16 border-t border-[color:var(--color-border)] bg-[color:var(--color-surface-muted)]">
       <div className="container-wide py-8 md:py-10">
-        <div className="overflow-hidden rounded-[2rem] border border-[color:var(--color-border)] bg-white shadow-[0_24px_44px_rgba(15,23,42,0.08)]">
+        <div className="overflow-hidden rounded-[2rem] border border-[color:var(--color-border)] bg-[color:var(--color-surface)] shadow-[0_24px_44px_var(--color-shadow-soft)]">
           <section className="p-4 md:p-6 lg:p-8">
             <div className="grid gap-3 md:hidden">
               {linkGroups.map((group) => (
                 <details
                   key={`mobile-footer-${group.title}`}
-                  className="group rounded-2xl border border-[color:var(--color-border)] bg-[#fffafa]"
+                  className="group rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-soft)]"
                 >
                   <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-semibold">
                     <span>{group.title}</span>
@@ -111,7 +111,7 @@ export function Footer() {
             </div>
           </section>
 
-          <section className="border-t border-[color:var(--color-border)] bg-[linear-gradient(145deg,_#fffafa,_#ffffff)] p-4 md:p-6 lg:p-8">
+          <section className="border-t border-[color:var(--color-border)] bg-[image:var(--gradient-surface-soft)] p-4 md:p-6 lg:p-8">
             <div className="grid gap-6 lg:grid-cols-[1.15fr_1fr]">
               <div>
                 <div className="flex items-center gap-3">
@@ -128,19 +128,19 @@ export function Footer() {
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="rounded-lg border border-[color:var(--color-border)] bg-white px-2 py-1 text-xs font-semibold text-[color:var(--color-muted)]">
+                  <span className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 py-1 text-xs font-semibold text-[color:var(--color-muted)]">
                     7/24 Müşteri Desteği
                   </span>
-                  <span className="rounded-lg border border-[color:var(--color-border)] bg-white px-2 py-1 text-xs font-semibold text-[color:var(--color-muted)]">
+                  <span className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 py-1 text-xs font-semibold text-[color:var(--color-muted)]">
                     Aynı Gün Kargo
                   </span>
-                  <span className="rounded-lg border border-[color:var(--color-border)] bg-white px-2 py-1 text-xs font-semibold text-[color:var(--color-muted)]">
+                  <span className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 py-1 text-xs font-semibold text-[color:var(--color-muted)]">
                     Kolay İade
                   </span>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-[color:var(--color-border)] bg-white p-4">
+              <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-elevated)] p-4">
                 <p className="text-sm font-semibold uppercase tracking-wide">İletişim ve Ödeme</p>
 
                 <div className="mt-3 grid gap-2 text-sm text-[color:var(--color-muted)]">
@@ -158,13 +158,13 @@ export function Footer() {
                   </p>
                 </div>
 
-                <div className="mt-4 rounded-xl border border-[color:var(--color-border)] bg-[#fffafa] p-3">
+                <div className="mt-4 rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-soft)] p-3">
                   <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-[color:var(--color-primary)]">
                     <ShieldCheckIcon className="size-4" /> Güvenli Ödeme Altyapısı
                   </p>
 
                   <div className="mt-2 flex flex-wrap items-center gap-2">
-                    <div className="inline-flex items-center rounded-lg border border-[color:var(--color-border)] bg-white px-2 py-1">
+                    <div className="inline-flex items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 py-1">
                       <Image
                         src="/payments/iyzico-logo.jpg"
                         alt="iyzico"
@@ -173,7 +173,7 @@ export function Footer() {
                         className="h-6 w-auto object-contain"
                       />
                     </div>
-                    <div className="inline-flex items-center rounded-lg border border-[color:var(--color-border)] bg-white px-1 py-1">
+                    <div className="inline-flex items-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-1 py-1">
                       <Image
                         src="/payments/iyzico-badge.jpg"
                         alt="iyzico korumalı ödeme"
@@ -185,7 +185,7 @@ export function Footer() {
                     {cardBadges.map((badge) => (
                       <span
                         key={badge}
-                        className="rounded-lg border border-[color:var(--color-border)] bg-white px-2 py-1 text-[11px] font-semibold text-[color:var(--color-muted)]"
+                        className="rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface)] px-2 py-1 text-[11px] font-semibold text-[color:var(--color-muted)]"
                       >
                         {badge}
                       </span>
@@ -199,7 +199,7 @@ export function Footer() {
                     href="https://etbis.ticaret.gov.tr/tr/Anasayfa/SiteAraSonuc?siteId=f3ce457b-0bac-4da2-9e7f-e803761bc37b"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-white p-2"
+                    className="inline-block overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] p-2"
                   >
                     <Image src="/etbis-qr.svg" alt="ETBİS QR" width={108} height={108} className="h-[108px] w-[108px]" />
                   </Link>
@@ -208,7 +208,7 @@ export function Footer() {
             </div>
           </section>
 
-          <section className="border-t border-[color:var(--color-border)] bg-[#fff2f3] px-4 py-4 md:px-6 lg:px-8">
+          <section className="border-t border-[color:var(--color-border)] bg-[color:var(--color-surface-soft-2)] px-4 py-4 md:px-6 lg:px-8">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs text-[color:var(--color-muted)]">© 2026 ERLER AVM. Tüm hakları saklıdır.</p>
               <p className="text-lg font-black tracking-[0.22em] text-[color:var(--color-primary)]">ERLER AVM</p>

@@ -46,7 +46,7 @@ export function NavSearch({ className = "" }: NavSearchProps) {
 
   return (
     <div ref={wrapperRef} className={["relative", className].filter(Boolean).join(" ")}>
-      <div className="flex h-11 items-center rounded-2xl border border-[color:var(--color-border)] bg-white pl-3 pr-2 shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
+      <div className="flex h-11 items-center rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface)] pl-3 pr-2 shadow-[0_8px_20px_var(--color-shadow-soft)]">
         <MagnifyingGlassIcon className="size-5 text-[color:var(--color-muted)]" />
         <input
           value={query}
@@ -65,7 +65,7 @@ export function NavSearch({ className = "" }: NavSearchProps) {
       </div>
 
       {open && query.trim() ? (
-        <div className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-[120] overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-white shadow-[0_20px_36px_rgba(15,23,42,0.12)]">
+        <div className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-[120] overflow-hidden rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-surface-elevated)] shadow-[0_20px_36px_var(--color-shadow-soft)]">
           {results.length ? (
             <div className="max-h-[340px] overflow-y-auto">
               {results.map((product) => (
@@ -73,7 +73,7 @@ export function NavSearch({ className = "" }: NavSearchProps) {
                   key={product.id}
                   className="flex items-center gap-3 border-b border-[color:var(--color-border)] p-3 last:border-b-0"
                 >
-                  <div className="relative h-14 w-14 overflow-hidden rounded-lg border border-[color:var(--color-border)] bg-[#fffafa]">
+                  <div className="relative h-14 w-14 overflow-hidden rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-surface-soft)]">
                     <Image src={product.image} alt={product.name} fill sizes="56px" className="object-cover" />
                   </div>
 
