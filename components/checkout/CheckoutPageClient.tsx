@@ -145,7 +145,7 @@ export function CheckoutPageClient() {
                   type="button"
                   onClick={handlePrimaryAction}
                   disabled={primaryDisabled}
-                  className="rounded-xl bg-[color:var(--color-primary)] px-4 py-2 text-sm font-semibold text-white hover:bg-[color:var(--color-primary-strong)] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="rounded-xl bg-[color:var(--color-primary)] px-4 py-2 text-sm font-semibold !text-white hover:bg-[color:var(--color-primary-strong)] disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {primaryLabel}
                 </button>
@@ -171,7 +171,7 @@ export function CheckoutPageClient() {
               type="button"
               onClick={handlePrimaryAction}
               disabled={primaryDisabled}
-              className="inline-flex h-11 items-center justify-center rounded-xl bg-[color:var(--color-primary)] px-5 text-sm font-semibold text-white shadow-[0_10px_20px_rgba(217,15,35,0.25)] disabled:opacity-50"
+              className="inline-flex h-11 items-center justify-center rounded-xl bg-[color:var(--color-primary)] px-5 text-sm font-semibold !text-white shadow-[0_10px_20px_rgba(217,15,35,0.25)] disabled:opacity-50"
             >
               {primaryLabel}
             </button>

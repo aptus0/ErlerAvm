@@ -70,7 +70,7 @@ export function PaymentTabs({
             className={[
               "rounded-xl border px-3 py-2 text-sm font-semibold transition",
               activeTab === tab.id
-                ? "border-[color:var(--color-primary)] bg-[color:var(--color-primary)] text-white"
+                ? "border-[color:var(--color-primary)] bg-[color:var(--color-primary)] !text-white"
                 : "border-[color:var(--color-border)] bg-white text-[color:var(--color-muted)] hover:border-[color:var(--color-primary)]/40",
             ].join(" ")}
           >
@@ -171,7 +171,7 @@ export function PaymentTabs({
             className={[
               "rounded-lg border px-3 py-1.5 text-sm",
               invoiceType === "individual"
-                ? "border-[color:var(--color-primary)] bg-[color:var(--color-primary)] text-white"
+                ? "border-[color:var(--color-primary)] bg-[color:var(--color-primary)] !text-white"
                 : "border-[color:var(--color-border)] bg-white text-[color:var(--color-muted)]",
             ].join(" ")}
           >
@@ -183,7 +183,7 @@ export function PaymentTabs({
             className={[
               "rounded-lg border px-3 py-1.5 text-sm",
               invoiceType === "corporate"
-                ? "border-[color:var(--color-primary)] bg-[color:var(--color-primary)] text-white"
+                ? "border-[color:var(--color-primary)] bg-[color:var(--color-primary)] !text-white"
                 : "border-[color:var(--color-border)] bg-white text-[color:var(--color-muted)]",
             ].join(" ")}
           >

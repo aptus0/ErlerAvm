@@ -22,6 +22,7 @@ import {
 import { type MenuItem, getActiveMenuItems } from "@/lib/constants";
 
 import { NavSearch } from "@/components/layout/NavSearch";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 type MenuIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -123,6 +124,8 @@ export function Navbar() {
           <NavSearch className="ml-1 hidden flex-1 lg:block" />
 
           <div className="ml-auto flex items-center gap-1">
+            <ThemeToggle />
+
             <Link
               href="/account"
               onClick={() => setMobileOpen(false)}
@@ -135,7 +138,7 @@ export function Navbar() {
             <Link
               href="/cart"
               onClick={() => setMobileOpen(false)}
-              className="inline-flex h-10 items-center gap-1 rounded-xl bg-[color:var(--color-primary)] px-3 text-sm font-semibold text-white hover:bg-[color:var(--color-primary-strong)]"
+              className="inline-flex h-10 items-center gap-1 rounded-xl bg-[color:var(--color-primary)] px-3 text-sm font-semibold !text-white hover:bg-[color:var(--color-primary-strong)]"
             >
               <ShoppingBagIcon className="size-5" />
               <span className="hidden sm:inline">Sepet</span>

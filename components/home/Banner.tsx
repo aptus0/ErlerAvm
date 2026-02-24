@@ -31,6 +31,7 @@ type HeroStar = {
   opacity: number;
   blur: number;
   delay: number;
+  color: string;
 };
 
 const FALLING_BALLS: FallingBall[] = [
@@ -52,18 +53,18 @@ const FALLING_BALLS: FallingBall[] = [
 ];
 
 const HERO_STARS: HeroStar[] = [
-  { id: 1, left: 8, top: 12, size: 4, opacity: 0.4, blur: 0, delay: 0 },
-  { id: 2, left: 13, top: 36, size: 6, opacity: 0.3, blur: 0.3, delay: 0.2 },
-  { id: 3, left: 18, top: 20, size: 5, opacity: 0.35, blur: 0, delay: 0.5 },
-  { id: 4, left: 26, top: 8, size: 6, opacity: 0.25, blur: 0.4, delay: 0.7 },
-  { id: 5, left: 34, top: 24, size: 4, opacity: 0.35, blur: 0, delay: 0.1 },
-  { id: 6, left: 45, top: 15, size: 7, opacity: 0.22, blur: 0.5, delay: 0.6 },
-  { id: 7, left: 52, top: 35, size: 5, opacity: 0.34, blur: 0, delay: 0.9 },
-  { id: 8, left: 59, top: 9, size: 4, opacity: 0.28, blur: 0, delay: 0.3 },
-  { id: 9, left: 67, top: 28, size: 6, opacity: 0.3, blur: 0.3, delay: 0.4 },
-  { id: 10, left: 74, top: 12, size: 5, opacity: 0.38, blur: 0, delay: 0.8 },
-  { id: 11, left: 82, top: 34, size: 7, opacity: 0.25, blur: 0.5, delay: 0.2 },
-  { id: 12, left: 90, top: 22, size: 5, opacity: 0.32, blur: 0, delay: 1.1 },
+  { id: 1, left: 8, top: 12, size: 4, opacity: 0.4, blur: 0, delay: 0, color: "rgba(252, 211, 77, 0.95)" },
+  { id: 2, left: 13, top: 36, size: 6, opacity: 0.3, blur: 0.3, delay: 0.2, color: "rgba(251, 191, 36, 0.9)" },
+  { id: 3, left: 18, top: 20, size: 5, opacity: 0.35, blur: 0, delay: 0.5, color: "rgba(254, 243, 199, 0.94)" },
+  { id: 4, left: 26, top: 8, size: 6, opacity: 0.25, blur: 0.4, delay: 0.7, color: "rgba(245, 158, 11, 0.88)" },
+  { id: 5, left: 34, top: 24, size: 4, opacity: 0.35, blur: 0, delay: 0.1, color: "rgba(252, 211, 77, 0.92)" },
+  { id: 6, left: 45, top: 15, size: 7, opacity: 0.22, blur: 0.5, delay: 0.6, color: "rgba(251, 191, 36, 0.84)" },
+  { id: 7, left: 52, top: 35, size: 5, opacity: 0.34, blur: 0, delay: 0.9, color: "rgba(254, 240, 138, 0.9)" },
+  { id: 8, left: 59, top: 9, size: 4, opacity: 0.28, blur: 0, delay: 0.3, color: "rgba(245, 158, 11, 0.9)" },
+  { id: 9, left: 67, top: 28, size: 6, opacity: 0.3, blur: 0.3, delay: 0.4, color: "rgba(252, 211, 77, 0.92)" },
+  { id: 10, left: 74, top: 12, size: 5, opacity: 0.38, blur: 0, delay: 0.8, color: "rgba(254, 243, 199, 0.95)" },
+  { id: 11, left: 82, top: 34, size: 7, opacity: 0.25, blur: 0.5, delay: 0.2, color: "rgba(251, 191, 36, 0.85)" },
+  { id: 12, left: 90, top: 22, size: 5, opacity: 0.32, blur: 0, delay: 1.1, color: "rgba(245, 158, 11, 0.9)" },
 ];
 
 const BALL_TRIGGER_SCROLL = 36;
@@ -145,13 +146,14 @@ export function Banner() {
       <section
         className={[
           "brand-hero-grain brand-hero-stars relative left-1/2 w-screen -translate-x-1/2 overflow-hidden border-y border-[color:var(--color-border)]",
-          "bg-[radial-gradient(circle_at_top_right,_#fde7eb_0%,_#fff4f6_40%,_#ffffff_78%)]",
+          "bg-[radial-gradient(circle_at_top_right,_#a01629_0%,_#7f1d1d_32%,_#4c1016_66%,_#2c0b11_100%)]",
           "transition-[min-height,padding] duration-500",
           compactHero ? "min-h-[430px] px-4 py-7" : "min-h-[calc(100vh-7.2rem)] px-4 py-10",
         ].join(" ")}
       >
-        <div className="pointer-events-none absolute -right-28 top-8 h-56 w-56 rounded-full bg-[#fca5a5]/40 blur-3xl" />
-        <div className="pointer-events-none absolute -left-28 -top-10 h-64 w-64 rounded-full bg-[#fecdd3]/45 blur-3xl" />
+        <div className="pointer-events-none absolute -right-20 top-8 h-60 w-60 rounded-full bg-[#f59e0b]/20 blur-3xl" />
+        <div className="pointer-events-none absolute -left-24 -top-12 h-72 w-72 rounded-full bg-[#fbbf24]/14 blur-3xl" />
+        <div className="pointer-events-none absolute left-1/3 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-[#7f1d1d]/40 blur-3xl" />
 
         <div className="pointer-events-none absolute inset-0 z-[5]">
           {HERO_STARS.map((star) => (
@@ -166,12 +168,13 @@ export function Banner() {
                 opacity: star.opacity,
                 filter: `blur(${star.blur}px)`,
                 animationDelay: `${star.delay}s`,
+                ["--star-color" as string]: star.color,
               }}
             />
           ))}
         </div>
 
-        <div className="pointer-events-none absolute right-6 top-6 z-20 hidden items-center gap-2 rounded-full border border-[#f5b8c1] bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-[color:var(--color-primary)] md:inline-flex">
+        <div className="pointer-events-none absolute right-6 top-6 z-20 hidden items-center gap-2 rounded-full border border-amber-200/60 bg-[#3c1118]/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-amber-100 md:inline-flex">
           <SparklesIcon className="size-4" /> ERLER AVM KAMPANYA
         </div>
 
@@ -206,13 +209,13 @@ export function Banner() {
               compactHero ? "translate-y-[-8px] opacity-95" : "translate-y-0 opacity-100",
             ].join(" ")}
           >
-            <p className="inline-flex items-center gap-1 rounded-full border border-[#f5b8c1] bg-white/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-primary)]">
+            <p className="inline-flex items-center gap-1 rounded-full border border-amber-200/60 bg-[#3c1118]/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-100">
               <SparklesIcon className="size-4" /> ERLER AVM KAMPANYA
             </p>
-            <h1 className="mt-3 max-w-3xl text-3xl font-black leading-tight text-[color:var(--color-foreground)] md:text-5xl">
+            <h1 className="mt-3 max-w-3xl text-3xl font-black leading-tight text-white md:text-5xl">
               Premium kampanya haftasi ve modern e-ticaret deneyimi
             </h1>
-            <p className="mt-4 max-w-2xl text-sm text-[color:var(--color-muted)] md:text-base">
+            <p className="mt-4 max-w-2xl text-sm text-rose-100/90 md:text-base">
               Banner alani mat yildizli premium zeminde 3D urun vitriniyle calisir. Kampanya urunlerini hizli inceleyip
               tek tikla detay sayfasina gecebilirsiniz.
             </p>

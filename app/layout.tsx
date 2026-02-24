@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { IBM_Plex_Mono, Sora } from "next/font/google";
 import "./globals.css";
 
@@ -12,6 +13,20 @@ const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
 });
+
+const THEME_INIT_SCRIPT = `
+(() => {
+  try {
+    const key = "erler-theme";
+    const stored = window.localStorage.getItem(key);
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light");
+    const root = document.documentElement;
+    root.classList.toggle("dark", theme === "dark");
+    root.setAttribute("data-theme", theme);
+  } catch {}
+})();
+`;
 
 export const metadata: Metadata = {
   title: {
@@ -35,6 +50,9 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <body className={`${sora.variable} ${ibmPlexMono.variable}`} suppressHydrationWarning>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {THEME_INIT_SCRIPT}
+        </Script>
         {children}
       </body>
     </html>
