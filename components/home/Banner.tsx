@@ -35,6 +35,14 @@ type HeroStar = {
   color: string;
 };
 
+type CinematicPopBall = {
+  id: number;
+  left: number;
+  size: number;
+  delay: number;
+  drift: number;
+};
+
 const FALLING_BALLS: FallingBall[] = [
   { id: 1, left: 4, size: 10, delay: 0.0, duration: 0.92, blur: 0.2, drift: -12, opacity: 0.86, color: "#ef4444", radius: "50%" },
   { id: 2, left: 10, size: 14, delay: 0.04, duration: 0.98, blur: 0.5, drift: 16, opacity: 0.82, color: "#dc2626", radius: "56% 44% 50% 50%" },
@@ -51,6 +59,14 @@ const FALLING_BALLS: FallingBall[] = [
   { id: 13, left: 85, size: 8, delay: 0.33, duration: 0.88, blur: 0.45, drift: 11, opacity: 0.73, color: "#f87171", radius: "50%" },
   { id: 14, left: 91, size: 11, delay: 0.35, duration: 0.95, blur: 0.35, drift: -10, opacity: 0.84, color: "#ef4444", radius: "55% 45% 49% 51%" },
   { id: 15, left: 96, size: 10, delay: 0.38, duration: 0.94, blur: 0.3, drift: 8, opacity: 0.8, color: "#dc2626", radius: "50%" },
+];
+
+const CINEMATIC_POP_BALLS: CinematicPopBall[] = [
+  { id: 1, left: 39, size: 8, delay: 0.02, drift: -14 },
+  { id: 2, left: 44, size: 11, delay: 0.08, drift: -7 },
+  { id: 3, left: 49, size: 7, delay: 0.12, drift: 2 },
+  { id: 4, left: 54, size: 10, delay: 0.18, drift: 9 },
+  { id: 5, left: 59, size: 9, delay: 0.24, drift: 15 },
 ];
 
 const HERO_STARS: HeroStar[] = [
@@ -71,6 +87,7 @@ const HERO_STARS: HeroStar[] = [
 const BALL_TRIGGER_SCROLL = 36;
 const HERO_COMPACT_SCROLL = 70;
 const MINI_HERO_TRIGGER_SCROLL = 230;
+const CINEMATIC_STORAGE_KEY = "erler_banner_cinematic_seen_v1";
 
 const ProductViewer3D = dynamic(
   () => import("@/components/product/ProductViewer3D").then((module) => module.ProductViewer3D),
@@ -94,6 +111,9 @@ export function Banner() {
   const [isDesktop, setIsDesktop] = useState(false);
   const [enableMotionFx, setEnableMotionFx] = useState(false);
   const [render3dViewer, setRender3dViewer] = useState(false);
+  const [showCinematicIntro, setShowCinematicIntro] = useState(true);
+  const [cinematicStep, setCinematicStep] = useState<1 | 2 | 3 | 4>(1);
+  const [cinematicFadeOut, setCinematicFadeOut] = useState(false);
   const [active3dSlug, setActive3dSlug] = useState(banner3dProducts[0]?.slug ?? "atlas-pro-laptop");
 
   const crossedThresholdRef = useRef(false);
@@ -120,6 +140,41 @@ export function Banner() {
     return () => {
       window.removeEventListener("resize", updatePerformanceMode);
       reduceMotionMedia.removeEventListener("change", updatePerformanceMode);
+    };
+  }, []);
+
+  useEffect(() => {
+    const reduceMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frameId: number | null = null;
+    const timers: number[] = [];
+
+    const startCinematicFlow = () => {
+      const alreadySeen = window.sessionStorage.getItem(CINEMATIC_STORAGE_KEY) === "1";
+
+      if (alreadySeen || reduceMotionMedia.matches) {
+        setShowCinematicIntro(false);
+        return;
+      }
+
+      timers.push(window.setTimeout(() => setCinematicStep(2), 420));
+      timers.push(window.setTimeout(() => setCinematicStep(3), 1320));
+      timers.push(window.setTimeout(() => setCinematicStep(4), 2280));
+      timers.push(window.setTimeout(() => setCinematicFadeOut(true), 3900));
+      timers.push(
+        window.setTimeout(() => {
+          setShowCinematicIntro(false);
+          window.sessionStorage.setItem(CINEMATIC_STORAGE_KEY, "1");
+        }, 4320),
+      );
+    };
+
+    frameId = window.requestAnimationFrame(startCinematicFlow);
+
+    return () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+      timers.forEach((timerId) => window.clearTimeout(timerId));
     };
   }, []);
 
@@ -232,6 +287,62 @@ export function Banner() {
         <div className="pointer-events-none absolute -right-20 top-8 h-60 w-60 rounded-full bg-[#f59e0b]/20 blur-3xl" />
         <div className="pointer-events-none absolute -left-24 -top-12 h-72 w-72 rounded-full bg-[#fbbf24]/14 blur-3xl" />
         <div className="pointer-events-none absolute left-1/3 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-[#7f1d1d]/40 blur-3xl" />
+
+        {showCinematicIntro ? (
+          <div
+            className={[
+              "brand-cinematic-layer",
+              cinematicFadeOut ? "brand-cinematic-layer--fade" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            aria-hidden
+          >
+            <div className={["brand-cinematic-ribbon", cinematicStep >= 2 ? "is-active" : "", cinematicStep >= 3 ? "is-open" : ""].filter(Boolean).join(" ")}>
+              <span className="brand-cinematic-ribbon-half left" />
+              <span className="brand-cinematic-ribbon-half right" />
+            </div>
+
+            <div className={["brand-cinematic-brand", cinematicStep >= 3 ? "is-active" : ""].filter(Boolean).join(" ")}>
+              <span>ERLER AVM</span>
+            </div>
+
+            <div className={["brand-cinematic-gift", cinematicStep >= 4 ? "is-open" : ""].filter(Boolean).join(" ")}>
+              <span className="brand-cinematic-gift-shadow" />
+              <span className="brand-cinematic-gift-lid" />
+              <span className="brand-cinematic-gift-base">
+                <span className="brand-cinematic-gift-ribbon-v" />
+                <span className="brand-cinematic-gift-ribbon-h" />
+              </span>
+              <span className="brand-cinematic-product">
+                <Image
+                  src={active3dProduct?.image ?? "/products/real/atlas-main.jpg"}
+                  alt="ERLER AVM kampanya urunu"
+                  fill
+                  sizes="320px"
+                  className="object-cover"
+                  priority
+                />
+              </span>
+            </div>
+
+            <div className={["brand-cinematic-pop", cinematicStep >= 4 ? "is-active" : ""].filter(Boolean).join(" ")}>
+              {CINEMATIC_POP_BALLS.map((ball) => (
+                <span
+                  key={`cinematic-pop-${ball.id}`}
+                  className="brand-cinematic-pop-ball"
+                  style={{
+                    left: `${ball.left}%`,
+                    width: `${ball.size}px`,
+                    height: `${ball.size}px`,
+                    animationDelay: `${ball.delay}s`,
+                    ["--cinematic-drift" as string]: `${ball.drift}px`,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        ) : null}
 
         <div className="pointer-events-none absolute inset-0 z-[5]">
           {HERO_STARS.map((star) => (

@@ -158,6 +158,110 @@ a {
   }
 }
 
+@keyframes brandCinematicLayerFade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes brandCinematicRibbonDrop {
+  0% {
+    transform: translate3d(-50%, -140%, 0) scaleX(0.92);
+    opacity: 0;
+  }
+  70% {
+    transform: translate3d(-50%, 0, 0) scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-50%, -8px, 0) scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes brandCinematicBrandReveal {
+  0% {
+    opacity: 0;
+    filter: blur(14px);
+    transform: translate3d(-50%, 12px, 0) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(-50%, 0, 0) scale(1);
+  }
+}
+
+@keyframes brandCinematicGiftShake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes brandCinematicLidOpen {
+  0% {
+    transform: translate3d(-50%, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, -52px, 0) rotate(-11deg);
+  }
+}
+
+@keyframes brandCinematicProductLift {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, 14px, 0) scale(0.88);
+  }
+  70% {
+    opacity: 1;
+    transform: translate3d(-50%, -88px, 0) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(-50%, -82px, 0) scale(1);
+  }
+}
+
+@keyframes brandCinematicProductFloat {
+  0% {
+    transform: translate3d(-50%, -82px, 0);
+  }
+  50% {
+    transform: translate3d(-50%, -88px, 0);
+  }
+  100% {
+    transform: translate3d(-50%, -82px, 0);
+  }
+}
+
+@keyframes brandCinematicPopBall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: translate3d(calc(var(--cinematic-drift, 0px) * 0.8), -42px, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--cinematic-drift, 0px), 16px, 0) scale(0.96);
+  }
+}
+
 .brand-splash-fill {
   clip-path: inset(100% 0 0 0);
   animation: brandSplashFill 0.8s cubic-bezier(0.2, 0.7, 0.22, 1) forwards;
@@ -184,9 +288,258 @@ a {
   animation: brandStarTwinkle 2.6s ease-in-out infinite;
 }
 
+.brand-cinematic-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 72% at 50% -8%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 42%, rgba(0, 0, 0, 0) 76%),
+    radial-gradient(140% 90% at 50% 124%, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.02) 48%, rgba(0, 0, 0, 0.26) 100%),
+    linear-gradient(160deg, #8f1327 0%, #7a111f 35%, #5f0f1a 70%, #3e0913 100%);
+}
+
+.brand-cinematic-layer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.08) 0.7px, transparent 0.7px),
+    radial-gradient(rgba(40, 9, 13, 0.18) 0.6px, transparent 0.6px);
+  background-size: 3px 3px, 6px 6px;
+  background-position: 0 0, 1.2px 1.2px;
+  opacity: 0.28;
+}
+
+.brand-cinematic-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 52%);
+}
+
+.brand-cinematic-layer--fade {
+  animation: brandCinematicLayerFade 0.45s ease forwards;
+}
+
+.brand-cinematic-ribbon {
+  position: absolute;
+  left: 50%;
+  top: 12%;
+  width: min(68vw, 520px);
+  height: 38px;
+  transform: translate3d(-50%, -140%, 0);
+  opacity: 0;
+}
+
+.brand-cinematic-ribbon.is-active {
+  animation: brandCinematicRibbonDrop 0.72s cubic-bezier(0.25, 0.8, 0.24, 1) forwards;
+}
+
+.brand-cinematic-ribbon-half {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 51%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background:
+    linear-gradient(106deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.06) 28%, rgba(70, 14, 20, 0.44) 74%),
+    linear-gradient(170deg, #fca5a5, #dc2626 52%, #b91c1c 100%);
+  box-shadow: 0 10px 22px rgba(60, 6, 14, 0.33);
+  transition: transform 0.58s ease;
+}
+
+.brand-cinematic-ribbon-half.left {
+  left: 0;
+  border-radius: 999px 0 0 999px;
+}
+
+.brand-cinematic-ribbon-half.right {
+  right: 0;
+  border-radius: 0 999px 999px 0;
+}
+
+.brand-cinematic-ribbon.is-open .brand-cinematic-ribbon-half.left {
+  transform: translateX(-46%) rotate(-5deg);
+}
+
+.brand-cinematic-ribbon.is-open .brand-cinematic-ribbon-half.right {
+  transform: translateX(46%) rotate(5deg);
+}
+
+.brand-cinematic-brand {
+  position: absolute;
+  left: 50%;
+  top: calc(12% + 5px);
+  transform: translate3d(-50%, 12px, 0) scale(0.96);
+  opacity: 0;
+  filter: blur(14px);
+}
+
+.brand-cinematic-brand span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: min(74vw, 420px);
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 247, 0.9));
+  color: #7f1d1d;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  box-shadow: 0 14px 28px rgba(31, 9, 14, 0.24);
+}
+
+.brand-cinematic-brand.is-active {
+  animation: brandCinematicBrandReveal 0.66s cubic-bezier(0.22, 0.7, 0.25, 1) forwards;
+}
+
+.brand-cinematic-gift {
+  position: absolute;
+  left: 50%;
+  bottom: 14%;
+  width: min(24vw, 190px);
+  aspect-ratio: 1 / 1;
+  transform: translateX(-50%);
+}
+
+.brand-cinematic-gift.is-open {
+  animation: brandCinematicGiftShake 0.32s ease;
+}
+
+.brand-cinematic-gift-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 74%;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(10, 6, 8, 0.45);
+  filter: blur(9px);
+  transform: translateX(-50%);
+}
+
+.brand-cinematic-gift-base {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 70%;
+  transform: translateX(-50%);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 38%),
+    linear-gradient(168deg, #ef4444, #dc2626 45%, #991b1b 100%);
+  overflow: hidden;
+  box-shadow: 0 18px 28px rgba(41, 8, 13, 0.35);
+}
+
+.brand-cinematic-gift-lid {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: 108%;
+  height: 24%;
+  transform: translate3d(-50%, 0, 0);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0) 42%),
+    linear-gradient(165deg, #f87171, #dc2626 58%, #b91c1c);
+  box-shadow: 0 8px 20px rgba(38, 6, 12, 0.32);
+  transform-origin: 50% 88%;
+}
+
+.brand-cinematic-gift.is-open .brand-cinematic-gift-lid {
+  animation: brandCinematicLidOpen 0.66s cubic-bezier(0.25, 0.72, 0.25, 1) forwards;
+}
+
+.brand-cinematic-gift-ribbon-v,
+.brand-cinematic-gift-ribbon-h {
+  position: absolute;
+  background: linear-gradient(180deg, #fde68a, #fbbf24);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.35);
+}
+
+.brand-cinematic-gift-ribbon-v {
+  left: 50%;
+  top: 0;
+  width: 16%;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.brand-cinematic-gift-ribbon-h {
+  left: 0;
+  top: 44%;
+  width: 100%;
+  height: 14%;
+}
+
+.brand-cinematic-product {
+  position: absolute;
+  left: 50%;
+  bottom: 30%;
+  width: min(26vw, 220px);
+  aspect-ratio: 4 / 3;
+  transform: translate3d(-50%, 14px, 0) scale(0.88);
+  opacity: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow: 0 18px 36px rgba(22, 6, 10, 0.42);
+  overflow: hidden;
+}
+
+.brand-cinematic-product::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0) 42%);
+}
+
+.brand-cinematic-gift.is-open .brand-cinematic-product {
+  animation:
+    brandCinematicProductLift 0.78s cubic-bezier(0.22, 0.75, 0.24, 1) forwards,
+    brandCinematicProductFloat 2.4s ease-in-out 0.78s infinite;
+}
+
+.brand-cinematic-pop {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.brand-cinematic-pop-ball {
+  position: absolute;
+  bottom: 21%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fca5a5, #dc2626 62%, #991b1b 100%);
+  opacity: 0;
+}
+
+.brand-cinematic-pop.is-active {
+  opacity: 1;
+}
+
+.brand-cinematic-pop.is-active .brand-cinematic-pop-ball {
+  animation: brandCinematicPopBall 1.18s cubic-bezier(0.22, 0.76, 0.24, 1) forwards;
+}
+
 @media (max-width: 1023px) {
   .brand-hero-star:nth-child(n + 7) {
     display: none;
+  }
+
+  .brand-cinematic-gift {
+    width: min(34vw, 160px);
+    bottom: 10%;
+  }
+
+  .brand-cinematic-product {
+    width: min(42vw, 186px);
   }
 }
 
@@ -199,6 +552,28 @@ a {
     background:
       radial-gradient(circle at 84% 14%, rgba(251, 191, 36, 0.14), transparent 26%),
       linear-gradient(160deg, rgba(127, 29, 29, 0.3), rgba(69, 10, 10, 0.2) 55%, rgba(255, 255, 255, 0.01));
+  }
+
+  .brand-cinematic-ribbon {
+    width: min(88vw, 360px);
+    top: 10%;
+    height: 34px;
+  }
+
+  .brand-cinematic-brand span {
+    min-width: min(90vw, 320px);
+    height: 38px;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+  }
+
+  .brand-cinematic-gift {
+    width: min(44vw, 150px);
+    bottom: 9%;
+  }
+
+  .brand-cinematic-product {
+    width: min(58vw, 172px);
   }
 }
 
