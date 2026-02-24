@@ -142,9 +142,9 @@ export function Navbar() {
                         .filter(Boolean)
                         .join(" ")}
                     >
-                      {item.children.map((child) => (
+                      {item.children.map((child, childIndex) => (
                         <Link
-                          key={`${item.id}-${child.href}`}
+                          key={`${item.id}-${child.title}-${child.href}-${childIndex}`}
                           href={child.href}
                           className="flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-[color:var(--color-background)]"
                           onClick={() => setOpenMenuId(null)}
@@ -168,15 +168,15 @@ export function Navbar() {
                       .join(" ")}
                   >
                     <div className="grid gap-4 md:grid-cols-3">
-                      {item.mega.columns.map((column) => (
-                        <div key={`${item.id}-${column.title}`}>
+                      {item.mega.columns.map((column, columnIndex) => (
+                        <div key={`${item.id}-${column.title}-${columnIndex}`}>
                           <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[color:var(--color-muted)]">
                             {column.title}
                           </p>
                           <div className="grid gap-1">
-                            {column.links.map((link) => (
+                            {column.links.map((link, linkIndex) => (
                               <Link
-                                key={`${item.id}-${link.href}`}
+                                key={`${item.id}-${column.title}-${link.title}-${link.href}-${linkIndex}`}
                                 href={link.href}
                                 className="flex items-center justify-between rounded-xl px-3 py-2 text-sm transition hover:bg-[color:var(--color-background)]"
                                 onClick={() => setOpenMenuId(null)}
