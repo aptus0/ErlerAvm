@@ -39,8 +39,8 @@ const FALLING_BALLS: FallingBall[] = [
   { id: 15, left: 95, size: 9, delay: 0.31, duration: 0.88, blur: 0.2, drift: 7, opacity: 0.79, color: "#dc2626", radius: "50%" },
 ];
 
-const BALL_TRIGGER_SCROLL = 80;
-const MINI_HERO_TRIGGER_SCROLL = 360;
+const BALL_TRIGGER_SCROLL = 56;
+const MINI_HERO_TRIGGER_SCROLL = 280;
 
 export function Banner() {
   const megaColumns = useMemo(
@@ -92,7 +92,7 @@ export function Banner() {
           "brand-hero-grain relative left-1/2 w-screen -translate-x-1/2 overflow-hidden border-y border-[color:var(--color-border)]",
           "bg-[radial-gradient(circle_at_top_right,_#ffe7eb_0%,_#fff3f5_35%,_#ffffff_74%)]",
           "transition-[min-height,padding] duration-500",
-          compactHero ? "min-h-[480px] px-4 py-8" : "min-h-[calc(100vh-4.2rem)] px-4 py-10",
+          compactHero ? "min-h-[440px] px-4 py-7" : "min-h-[calc(100vh-7.2rem)] px-4 py-10",
         ].join(" ")}
       >
         <div className="pointer-events-none absolute -right-28 top-8 h-56 w-56 rounded-full bg-[#fca5a5]/40 blur-3xl" />
@@ -122,7 +122,12 @@ export function Banner() {
         ) : null}
 
         <div className="container relative z-10 grid gap-8 xl:grid-cols-[1.2fr_0.92fr] xl:items-center">
-          <div>
+          <div
+            className={[
+              "transition-all duration-500",
+              compactHero ? "translate-y-[-6px] opacity-95" : "translate-y-0 opacity-100",
+            ].join(" ")}
+          >
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-primary)]">ERLER AVM V1</p>
             <h1 className="mt-3 max-w-3xl text-3xl font-black leading-tight text-[color:var(--color-foreground)] md:text-5xl">
               Kirmizi-Beyaz temada modern e-ticaret altyapisi
@@ -144,7 +149,12 @@ export function Banner() {
             </div>
           </div>
 
-          <aside className="rounded-3xl border border-[color:var(--color-border)] bg-white/90 p-5 shadow-[0_20px_36px_rgba(15,23,42,0.12)] backdrop-blur-sm">
+          <aside
+            className={[
+              "rounded-3xl border border-[color:var(--color-border)] bg-white/90 p-5 shadow-[0_20px_36px_rgba(15,23,42,0.12)] backdrop-blur-sm transition-all duration-500",
+              compactHero ? "translate-y-[4px] opacity-95" : "translate-y-0 opacity-100",
+            ].join(" ")}
+          >
             <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--color-primary)]">
               <SparklesIcon className="size-4" /> Mega Menu Hizli Erisim
             </p>
@@ -178,7 +188,7 @@ export function Banner() {
           "pointer-events-none fixed inset-x-0 z-40 transition-all duration-300",
           showMiniHero ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0",
         ].join(" ")}
-        style={{ top: "4.2rem" }}
+        style={{ top: "5.9rem" }}
       >
         <div className="container pointer-events-auto">
           <div className="flex items-center justify-between gap-3 rounded-2xl border border-[color:var(--color-border)] bg-white/95 px-4 py-3 shadow-[0_14px_30px_rgba(15,23,42,0.14)] backdrop-blur-md">

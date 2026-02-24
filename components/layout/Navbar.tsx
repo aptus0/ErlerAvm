@@ -97,13 +97,13 @@ export function Navbar() {
     <nav
       ref={navRef}
       className={[
-        "sticky top-0 z-50 transition-all duration-300",
+        "sticky top-10 z-[70] transition-all duration-300",
         isHome && !compactNav
-          ? "border-b border-transparent bg-white/75 backdrop-blur-md"
+          ? "border-b border-transparent bg-white/78 backdrop-blur-md"
           : "border-b border-[color:var(--color-border)] bg-white/96 shadow-[0_8px_18px_rgba(15,23,42,0.08)] backdrop-blur-md",
       ].join(" ")}
     >
-      <div className={["container transition-all duration-300", compactNav ? "py-2" : "py-3"].join(" ")}>
+      <div className={["container transition-all duration-300", compactNav ? "py-1.5" : "py-3"].join(" ")}>
         <div className="flex items-center gap-2">
           <Link href="/" className="inline-flex items-center gap-2 rounded-xl px-2 py-1 hover:bg-[#fff4f4]">
             <Image

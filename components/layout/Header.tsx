@@ -26,16 +26,16 @@ export function Header() {
   return (
     <header
       className={[
-        "transition-all duration-300",
+        "sticky top-0 z-[80] transition-all duration-300",
         isHome && !scrolled
-          ? "border-b border-transparent bg-white/70 backdrop-blur-md"
-          : "border-b border-[color:var(--color-border)] bg-white",
+          ? "border-b border-transparent bg-white/72 backdrop-blur-md"
+          : "border-b border-[color:var(--color-border)] bg-white/95 shadow-[0_8px_18px_rgba(15,23,42,0.08)] backdrop-blur-lg",
       ].join(" ")}
     >
       <div
         className={[
           "container flex flex-wrap items-center justify-between gap-2 text-xs text-[color:var(--color-muted)] transition-all duration-300 sm:text-sm",
-          scrolled ? "min-h-9" : "min-h-10",
+          scrolled ? "min-h-8" : "min-h-10",
         ].join(" ")}
       >
         <p className="font-medium">7/24 Musteri Destegi: 0850 000 00 00</p>
