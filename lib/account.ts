@@ -1,3 +1,5 @@
+import { formatTry as formatTrySafe } from "@/lib/format";
+
 export interface AccountUser {
   id: string;
   firstName: string;
@@ -398,11 +400,7 @@ const REQUEST_STATUS_META: Record<
 };
 
 export function formatTry(value: number): string {
-  return new Intl.NumberFormat("tr-TR", {
-    style: "currency",
-    currency: "TRY",
-    maximumFractionDigits: 0,
-  }).format(value);
+  return formatTrySafe(value);
 }
 
 export function getOrderStatusMeta(status: OrderStatus) {

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import type { Product } from "@/lib/constants";
+import { formatTry } from "@/lib/format";
 
 import { Sections } from "@/components/home/Sections";
 
@@ -9,14 +10,6 @@ interface FeaturedProductsProps {
   title: string;
   description: string;
   products: Product[];
-}
-
-function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("tr-TR", {
-    style: "currency",
-    currency: "TRY",
-    maximumFractionDigits: 0,
-  }).format(value);
 }
 
 export function FeaturedProducts({ title, description, products }: FeaturedProductsProps) {
@@ -45,7 +38,7 @@ export function FeaturedProducts({ title, description, products }: FeaturedProdu
             <p className="mt-1 text-sm text-[color:var(--color-muted)]">{product.shortDescription}</p>
 
             <div className="mt-4 flex items-center justify-between">
-              <p className="text-base font-bold text-[color:var(--color-primary)]">{formatCurrency(product.price)}</p>
+              <p className="text-base font-bold text-[color:var(--color-primary)]">{formatTry(product.price)}</p>
               <p className="text-xs text-[color:var(--color-muted)]">Stok: {product.has3d ? "3D" : "Standart"}</p>
             </div>
 

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { PRODUCTS } from "@/lib/constants";
+import { formatTry } from "@/lib/format";
 
 type ProductsPageProps = {
   searchParams: Promise<{
@@ -9,14 +10,6 @@ type ProductsPageProps = {
     campaign?: string;
   }>;
 };
-
-function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("tr-TR", {
-    style: "currency",
-    currency: "TRY",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
   const params = await searchParams;
@@ -58,7 +51,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             </div>
             <h2 className="mt-3 text-lg font-semibold">{product.name}</h2>
             <p className="mt-1 text-sm text-[color:var(--color-muted)]">{product.shortDescription}</p>
-            <p className="mt-3 font-bold text-[color:var(--color-primary)]">{formatCurrency(product.price)}</p>
+            <p className="mt-3 font-bold text-[color:var(--color-primary)]">{formatTry(product.price)}</p>
 
             <div className="mt-4 grid grid-cols-2 gap-2">
               <button

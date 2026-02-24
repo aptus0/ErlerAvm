@@ -7,14 +7,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { MagnifyingGlassIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 import { PRODUCTS } from "@/lib/constants";
-
-function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("tr-TR", {
-    style: "currency",
-    currency: "TRY",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
+import { formatTry } from "@/lib/format";
 
 interface NavSearchProps {
   className?: string;
@@ -94,7 +87,7 @@ export function NavSearch({ className = "" }: NavSearchProps) {
                     </Link>
                     <p className="text-xs text-[color:var(--color-muted)]">{product.category}</p>
                     <p className="text-sm font-bold text-[color:var(--color-primary)]">
-                      {formatCurrency(product.price)}
+                      {formatTry(product.price)}
                     </p>
                   </div>
 

@@ -1,18 +1,11 @@
 import Link from "next/link";
 
 import type { Product } from "@/lib/constants";
+import { formatTry } from "@/lib/format";
 
 interface RelatedProductsProps {
   title: string;
   products: Product[];
-}
-
-function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("tr-TR", {
-    style: "currency",
-    currency: "TRY",
-    maximumFractionDigits: 0,
-  }).format(value);
 }
 
 export function RelatedProducts({ title, products }: RelatedProductsProps) {
@@ -32,7 +25,7 @@ export function RelatedProducts({ title, products }: RelatedProductsProps) {
           >
             <p className="font-semibold">{product.name}</p>
             <p className="mt-1 text-xs text-[color:var(--color-muted)]">{product.category}</p>
-            <p className="mt-2 text-sm font-bold text-[color:var(--color-primary)]">{formatCurrency(product.price)}</p>
+            <p className="mt-2 text-sm font-bold text-[color:var(--color-primary)]">{formatTry(product.price)}</p>
           </Link>
         ))}
       </div>

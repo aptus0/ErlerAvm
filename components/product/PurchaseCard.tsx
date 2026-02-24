@@ -13,6 +13,7 @@ import { useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
 import type { Product, ProductDetail } from "@/lib/constants";
+import { formatTry } from "@/lib/format";
 
 interface PurchaseCardProps {
   product: Product;
@@ -26,14 +27,6 @@ const CITY_DISTRICT_MAP = {
 } as const;
 
 type DeliveryCity = keyof typeof CITY_DISTRICT_MAP;
-
-function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("tr-TR", {
-    style: "currency",
-    currency: "TRY",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
 
 function estimateDelivery(city: DeliveryCity): string {
   if (city === "Istanbul") {
@@ -85,9 +78,9 @@ export function PurchaseCard({ product, detail }: PurchaseCardProps) {
 
       <div className="mt-5 rounded-2xl border border-[color:var(--color-border)] bg-[#fff9f9] p-4">
         <div className="flex flex-wrap items-center gap-3">
-          <p className="text-4xl font-bold text-[color:var(--color-primary)]">{formatCurrency(product.price)}</p>
+          <p className="text-4xl font-bold text-[color:var(--color-primary)]">{formatTry(product.price)}</p>
           {detail.oldPrice ? (
-            <p className="text-sm text-[color:var(--color-muted)] line-through">{formatCurrency(detail.oldPrice)}</p>
+            <p className="text-sm text-[color:var(--color-muted)] line-through">{formatTry(detail.oldPrice)}</p>
           ) : null}
           {discountRate > 0 ? (
             <span className="rounded-full bg-[color:var(--color-primary)] px-2 py-1 text-xs font-bold text-white">

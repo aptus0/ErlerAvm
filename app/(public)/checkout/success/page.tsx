@@ -7,6 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { PRODUCTS } from "@/lib/constants";
+import { formatTry } from "@/lib/format";
 
 type SuccessPageProps = {
   searchParams: Promise<{
@@ -20,14 +21,6 @@ const timeline = [
   "Kargoya verildi",
   "Teslim edildi",
 ];
-
-function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("tr-TR", {
-    style: "currency",
-    currency: "TRY",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
 
 export default async function CheckoutSuccessPage({ searchParams }: SuccessPageProps) {
   const params = await searchParams;
@@ -100,7 +93,7 @@ export default async function CheckoutSuccessPage({ searchParams }: SuccessPageP
               <div className="h-24 rounded-xl bg-[linear-gradient(140deg,_#fff1f2,_#fee2e2)]" />
               <p className="mt-2 font-semibold">{item.name}</p>
               <p className="text-xs text-[color:var(--color-muted)]">{item.category}</p>
-              <p className="mt-2 text-sm font-bold text-[color:var(--color-primary)]">{formatCurrency(item.price)}</p>
+              <p className="mt-2 text-sm font-bold text-[color:var(--color-primary)]">{formatTry(item.price)}</p>
             </article>
           ))}
         </div>

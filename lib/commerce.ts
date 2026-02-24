@@ -1,4 +1,5 @@
 import { ADDRESS_ITEMS, PAYMENT_METHODS } from "@/lib/account";
+import { formatTry as formatTrySafe } from "@/lib/format";
 
 export interface CartItem {
   id: string;
@@ -109,11 +110,7 @@ export const CHECKOUT_PAYMENT_TABS: Array<{
 ];
 
 export function formatTry(value: number): string {
-  return new Intl.NumberFormat("tr-TR", {
-    style: "currency",
-    currency: "TRY",
-    maximumFractionDigits: 0,
-  }).format(value);
+  return formatTrySafe(value);
 }
 
 export function getInitialCartItems(): CartItem[] {
