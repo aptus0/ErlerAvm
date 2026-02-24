@@ -34,7 +34,7 @@ export default function HomePage() {
       <Banner />
       <FeaturedProducts
         title="One Cikanlar"
-        description="Vitrinde yer alan secili urunler. Masaustu gorunumde 6'li profesyonel grid kullanilir."
+        description="Vitrinde yer alan secili urunler. Mobilde 2'li, masaustunde 6'li profesyonel grid kullanilir."
         products={featuredProducts}
       />
       <FeaturedProducts

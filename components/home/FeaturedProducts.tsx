@@ -15,18 +15,18 @@ interface FeaturedProductsProps {
 export function FeaturedProducts({ title, description, products }: FeaturedProductsProps) {
   return (
     <Sections title={title} description={description}>
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-3 xl:grid-cols-6">
         {products.map((product, index) => (
           <article
             key={`${title}-${product.id}-${index}`}
-            className="group rounded-2xl border border-[color:var(--color-border)] bg-white p-3 shadow-[0_12px_20px_rgba(15,23,42,0.05)] transition hover:-translate-y-0.5 hover:border-[#ef9da6] hover:shadow-[0_18px_28px_rgba(15,23,42,0.1)]"
+            className="group rounded-2xl border border-[color:var(--color-border)] bg-white p-2.5 shadow-[0_10px_18px_rgba(15,23,42,0.05)] transition hover:-translate-y-0.5 hover:border-[#ef9da6] hover:shadow-[0_18px_28px_rgba(15,23,42,0.1)] sm:p-3"
           >
-            <div className="relative h-36 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[#fff7f8]">
+            <div className="relative h-28 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[#fff7f8] sm:h-36">
               <Image
                 src={product.image}
                 alt={product.name}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 16vw"
+                sizes="(max-width: 640px) 50vw, (max-width: 1280px) 33vw, 16vw"
                 className="object-cover transition duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-black/40 to-transparent" />
@@ -40,26 +40,28 @@ export function FeaturedProducts({ title, description, products }: FeaturedProdu
               ) : null}
             </div>
 
-            <h3 className="mt-3 line-clamp-1 text-sm font-semibold">{product.name}</h3>
-            <p className="mt-1 line-clamp-2 min-h-9 text-xs text-[color:var(--color-muted)]">{product.shortDescription}</p>
+            <h3 className="mt-2.5 line-clamp-1 text-xs font-semibold sm:mt-3 sm:text-sm">{product.name}</h3>
+            <p className="mt-1 line-clamp-2 min-h-9 text-[11px] text-[color:var(--color-muted)] sm:text-xs">
+              {product.shortDescription}
+            </p>
 
-            <div className="mt-3 flex items-center justify-between">
-              <p className="text-sm font-bold text-[color:var(--color-primary)]">{formatTry(product.price)}</p>
+            <div className="mt-2.5 flex items-center justify-between sm:mt-3">
+              <p className="text-xs font-bold text-[color:var(--color-primary)] sm:text-sm">{formatTry(product.price)}</p>
               <p className="text-[10px] font-semibold uppercase tracking-wide text-[color:var(--color-muted)]">
                 {product.has3d ? "3D Hazir" : "Standart"}
               </p>
             </div>
 
-            <div className="mt-3 grid grid-cols-2 gap-2">
+            <div className="mt-2.5 grid grid-cols-2 gap-2 sm:mt-3">
               <button
                 type="button"
-                className="rounded-lg bg-[color:var(--color-primary)] px-2 py-2 text-xs font-semibold text-white transition hover:bg-[color:var(--color-primary-strong)]"
+                className="rounded-lg bg-[color:var(--color-primary)] px-2 py-2 text-[11px] font-semibold text-white transition hover:bg-[color:var(--color-primary-strong)] sm:text-xs"
               >
                 Satin Al
               </button>
               <Link
                 href={`/products/${product.slug}`}
-                className="inline-flex items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-white px-2 py-2 text-xs font-semibold transition hover:border-[color:var(--color-primary)]"
+                className="inline-flex items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-white px-2 py-2 text-[11px] font-semibold transition hover:border-[color:var(--color-primary)] sm:text-xs"
               >
                 Incele
               </Link>

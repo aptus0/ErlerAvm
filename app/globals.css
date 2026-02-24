@@ -183,3 +183,30 @@ a {
   clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
   animation: brandStarTwinkle 2.6s ease-in-out infinite;
 }
+
+@media (max-width: 1023px) {
+  .brand-hero-star:nth-child(n + 7) {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .brand-hero-grain::before {
+    opacity: 0.2;
+  }
+
+  .brand-hero-stars::after {
+    background:
+      radial-gradient(circle at 84% 14%, rgba(251, 191, 36, 0.14), transparent 26%),
+      linear-gradient(160deg, rgba(127, 29, 29, 0.3), rgba(69, 10, 10, 0.2) 55%, rgba(255, 255, 255, 0.01));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-falling-ball,
+  .brand-hero-star,
+  .brand-splash-fill,
+  .brand-splash-fade-out {
+    animation: none !important;
+  }
+}

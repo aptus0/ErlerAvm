@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -86,9 +87,13 @@ const ProductViewer3D = dynamic(
 export function Banner() {
   const banner3dProducts = useMemo(() => PRODUCTS.filter((product) => product.has3d).slice(0, 4), []);
 
+  const hero3dRef = useRef<HTMLDivElement | null>(null);
   const [scrollY, setScrollY] = useState(0);
   const [showBallBurst, setShowBallBurst] = useState(false);
   const [ballBurstKey, setBallBurstKey] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [enableMotionFx, setEnableMotionFx] = useState(false);
+  const [render3dViewer, setRender3dViewer] = useState(false);
   const [active3dSlug, setActive3dSlug] = useState(banner3dProducts[0]?.slug ?? "atlas-pro-laptop");
 
   const crossedThresholdRef = useRef(false);
@@ -98,6 +103,79 @@ export function Banner() {
     banner3dProducts.find((product) => product.slug === active3dSlug) ?? banner3dProducts[0] ?? null;
 
   useEffect(() => {
+    const reduceMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const updatePerformanceMode = () => {
+      window.requestAnimationFrame(() => {
+        const desktop = window.innerWidth >= 1024;
+        setIsDesktop(desktop);
+        setEnableMotionFx(desktop && !reduceMotionMedia.matches);
+      });
+    };
+
+    updatePerformanceMode();
+    window.addEventListener("resize", updatePerformanceMode, { passive: true });
+    reduceMotionMedia.addEventListener("change", updatePerformanceMode);
+
+    return () => {
+      window.removeEventListener("resize", updatePerformanceMode);
+      reduceMotionMedia.removeEventListener("change", updatePerformanceMode);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop || render3dViewer) {
+      return;
+    }
+
+    const target = hero3dRef.current;
+    if (!target) {
+      return;
+    }
+
+    let idleTimer: number | null = null;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) {
+          return;
+        }
+
+        observer.disconnect();
+        idleTimer = window.setTimeout(() => {
+          setRender3dViewer(true);
+        }, 180);
+      },
+      { rootMargin: "220px" },
+    );
+
+    observer.observe(target);
+
+    return () => {
+      observer.disconnect();
+      if (idleTimer) {
+        window.clearTimeout(idleTimer);
+      }
+    };
+  }, [isDesktop, render3dViewer]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!enableMotionFx) {
+      return;
+    }
+
     const triggerBallBurst = () => {
       if (burstTimeoutRef.current) {
         window.clearTimeout(burstTimeoutRef.current);
@@ -108,13 +186,11 @@ export function Banner() {
 
       burstTimeoutRef.current = window.setTimeout(() => {
         setShowBallBurst(false);
-      }, 1120);
+      }, 920);
     };
 
-    const handleScroll = () => {
+    const handleBurstScroll = () => {
       const nextY = window.scrollY;
-      setScrollY(nextY);
-
       const passedTrigger = nextY > BALL_TRIGGER_SCROLL;
 
       if (passedTrigger && !crossedThresholdRef.current) {
@@ -127,16 +203,16 @@ export function Banner() {
       }
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleBurstScroll();
+    window.addEventListener("scroll", handleBurstScroll, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleBurstScroll);
       if (burstTimeoutRef.current) {
         window.clearTimeout(burstTimeoutRef.current);
       }
     };
-  }, []);
+  }, [enableMotionFx]);
 
   const compactHero = scrollY > HERO_COMPACT_SCROLL;
   const showMiniHero = scrollY > MINI_HERO_TRIGGER_SCROLL;
@@ -178,7 +254,7 @@ export function Banner() {
           <SparklesIcon className="size-4" /> ERLER AVM KAMPANYA
         </div>
 
-        {showBallBurst ? (
+        {enableMotionFx && showBallBurst ? (
           <div key={ballBurstKey} className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-56 overflow-hidden">
             {FALLING_BALLS.map((ball) => (
               <span
@@ -243,8 +319,31 @@ export function Banner() {
                 <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--color-primary)]">
                   <SparklesIcon className="size-4" /> Banner 3D Urun Vitrini
                 </p>
-                <div className="mt-3 overflow-hidden rounded-xl border border-[color:var(--color-border)]">
-                  <ProductViewer3D productSlug={active3dProduct.slug} className="h-[240px]" />
+                <div ref={hero3dRef} className="mt-3 overflow-hidden rounded-xl border border-[color:var(--color-border)]">
+                  {render3dViewer ? (
+                    <ProductViewer3D productSlug={active3dProduct.slug} className="h-[240px]" />
+                  ) : (
+                    <div className="relative h-[240px] bg-[radial-gradient(circle_at_top,_#fff7f8,_#ffe4e6,_#fff1f2)]">
+                      <Image
+                        src={active3dProduct.image}
+                        alt={`${active3dProduct.name} onizleme`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 480px"
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 p-3">
+                        <p className="text-xs font-semibold text-white/95">3D sahne performans icin gec yukleniyor</p>
+                        <button
+                          type="button"
+                          onClick={() => setRender3dViewer(true)}
+                          className="rounded-lg border border-white/50 bg-black/45 px-2.5 py-1.5 text-[11px] font-semibold text-white"
+                        >
+                          3D Yukle
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="mt-3 flex items-center justify-between gap-2">
@@ -284,7 +383,7 @@ export function Banner() {
 
       <div
         className={[
-          "pointer-events-none fixed inset-x-0 z-[65] transition-all duration-300",
+          "pointer-events-none fixed inset-x-0 z-[65] hidden transition-all duration-300 md:block",
           showMiniHero ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0",
         ].join(" ")}
         style={{ top: "6.6rem" }}

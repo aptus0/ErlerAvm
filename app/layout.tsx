@@ -3,6 +3,8 @@ import Script from "next/script";
 import { IBM_Plex_Mono, Sora } from "next/font/google";
 import "./globals.css";
 
+import { WebVitalsReporter } from "@/components/performance/WebVitalsReporter";
+
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
@@ -53,6 +55,7 @@ export default function RootLayout({
         <Script id="theme-init" strategy="beforeInteractive">
           {THEME_INIT_SCRIPT}
         </Script>
+        <WebVitalsReporter />
         {children}
       </body>
     </html>
