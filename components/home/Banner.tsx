@@ -1,34 +1,69 @@
 import Link from "next/link";
 
+import { SparklesIcon } from "@heroicons/react/24/outline";
+
 import { Button } from "@/components/ui/Button";
+import { NAV_MENU } from "@/lib/constants";
 
 export function Banner() {
-  return (
-    <section className="card relative overflow-hidden border-none bg-[color:var(--color-primary)] p-8 text-white md:p-12">
-      <div className="pointer-events-none absolute -right-16 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-white/20 blur-3xl" />
-      <div className="pointer-events-none absolute -left-10 -top-10 h-48 w-48 rounded-full bg-black/15 blur-3xl" />
+  const megaColumns =
+    NAV_MENU.find((item) => item.id === "products" && item.type === "mega")?.mega?.columns ?? [];
 
-      <div className="relative max-w-2xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">Erkur AVM V1</p>
-        <h1 className="mt-3 text-3xl font-bold leading-tight md:text-5xl">
-          Kirmizi-Beyaz temada modern e-ticaret altyapisi
-        </h1>
-        <p className="mt-4 text-sm text-white/90 md:text-base">
-          Banner, urun sectionlari, menu mimarisi ve admin panel route gruplari hazir. Sprint 2 icin
-          urun-kategori-sepet akisina gecilebilir.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/products">
-            <Button className="border border-white/40 bg-white text-[color:var(--color-primary)] hover:bg-white/90">
-              Urunlere Git
-            </Button>
-          </Link>
-          <Link href="/admin">
-            <Button variant="ghost" className="border border-white/30 text-white hover:bg-white/10">
-              Admin Panel
-            </Button>
-          </Link>
+  return (
+    <section className="relative overflow-hidden rounded-[1.5rem] border border-[color:var(--color-border)] bg-white p-6 shadow-[0_20px_34px_rgba(15,23,42,0.09)] md:p-8">
+      <div className="pointer-events-none absolute -right-12 top-8 h-40 w-40 rounded-full bg-[#ffe5e8] blur-2xl" />
+      <div className="pointer-events-none absolute -left-12 -top-10 h-36 w-36 rounded-full bg-[#fff1f2] blur-2xl" />
+
+      <div className="relative grid gap-6 xl:grid-cols-[1.25fr_0.95fr] xl:items-center">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-primary)]">
+            Erkur AVM V1
+          </p>
+          <h1 className="mt-3 text-3xl font-bold leading-tight text-[color:var(--color-foreground)] md:text-5xl">
+            Kirmizi-Beyaz temada modern e-ticaret altyapisi
+          </h1>
+          <p className="mt-4 max-w-2xl text-sm text-[color:var(--color-muted)] md:text-base">
+            Banner, urun sectionlari, menu mimarisi ve admin panel route gruplari hazir. Sprint 2 icin
+            urun-kategori-sepet akisina gecilebilir.
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link href="/products">
+              <Button className="h-11 px-6">Urunlere Git</Button>
+            </Link>
+            <Link href="/products?campaign=flash">
+              <Button variant="secondary" className="h-11 px-6">
+                Kampanyalari Gor
+              </Button>
+            </Link>
+          </div>
         </div>
+
+        <aside className="rounded-2xl border border-[color:var(--color-border)] bg-[linear-gradient(150deg,_#fff7f8,_#ffffff)] p-4 shadow-[0_14px_30px_rgba(15,23,42,0.08)]">
+          <p className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--color-primary)]">
+            <SparklesIcon className="size-4" /> Mega Menu Hizli Erisim
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3 xl:grid-cols-1 2xl:grid-cols-3">
+            {megaColumns.map((column) => (
+              <div key={column.title} className="rounded-xl border border-[color:var(--color-border)] bg-white p-3">
+                <p className="text-xs font-bold uppercase tracking-wide text-[color:var(--color-muted)]">
+                  {column.title}
+                </p>
+                <div className="mt-2 grid gap-1">
+                  {column.links.map((link, linkIndex) => (
+                    <Link
+                      key={`${column.title}-${link.title}-${linkIndex}`}
+                      href={link.href}
+                      className="rounded-lg px-2 py-1 text-sm font-medium hover:bg-[#fff1f2] hover:text-[color:var(--color-primary)]"
+                    >
+                      {link.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </aside>
       </div>
     </section>
   );

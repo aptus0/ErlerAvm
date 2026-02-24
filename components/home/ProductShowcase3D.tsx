@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import type { Product } from "@/lib/constants";
 
 import { Sections } from "@/components/home/Sections";
@@ -10,14 +12,23 @@ export function ProductShowcase3D({ products }: ProductShowcase3DProps) {
   return (
     <Sections
       title="3D Urunler"
-      description="Sprint 2 icin @react-three/fiber entegrasyonuna hazir, V1'de yer tutucu kartlarla geliyor."
+      description="Sprint 2 icin @react-three/fiber entegrasyonuna hazir, V1de yer tutucu kartlarla geliyor."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
-          <article key={product.id} className="card p-4">
-            <div className="relative flex min-h-36 items-center justify-center overflow-hidden rounded-xl bg-[radial-gradient(circle_at_center,_#ffffff_10%,_#f8d7dc_65%,_#f3c9ce_100%)]">
-              <div className="h-16 w-16 rotate-12 rounded-2xl border-2 border-[color:var(--color-primary)] bg-white/70 shadow-[8px_8px_0_0_rgba(217,15,35,0.25)]" />
-              <span className="absolute bottom-3 rounded-full bg-[color:var(--color-primary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+          <article
+            key={product.id}
+            className="rounded-2xl border border-[color:var(--color-border)] bg-white p-4 shadow-[0_12px_24px_rgba(15,23,42,0.06)]"
+          >
+            <div className="relative min-h-44 overflow-hidden rounded-xl border border-[color:var(--color-border)] bg-[#fff8f8]">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
+              />
+              <span className="absolute bottom-3 left-3 rounded-full bg-[color:var(--color-primary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
                 3D Hazir
               </span>
             </div>

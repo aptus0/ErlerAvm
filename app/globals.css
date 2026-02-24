@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --color-background: #fff5f5;
+  --color-background: #ffffff;
   --color-surface: #ffffff;
   --color-foreground: #18181b;
   --color-muted: #6b7280;
   --color-primary: #d90f23;
   --color-primary-strong: #af0d1c;
-  --color-border: #f3c9ce;
-  --container-width: 1200px;
+  --color-border: #f1d2d6;
+  --container-width: 1240px;
 }
 
 @theme inline {
@@ -30,10 +30,7 @@ body {
 }
 
 body {
-  background:
-    radial-gradient(circle at top right, rgba(217, 15, 35, 0.2), transparent 36%),
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), transparent 45%),
-    var(--color-background);
+  background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), "Segoe UI", sans-serif;
 }

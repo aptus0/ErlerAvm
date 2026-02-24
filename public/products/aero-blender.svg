@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="g5" x1="0" y1="0" x2="1200" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ECFEFF"/>
+      <stop offset="1" stop-color="#CFFAFE"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g5)"/>
+  <rect x="470" y="180" width="260" height="350" rx="42" fill="#E0F2FE" stroke="#0891B2" stroke-width="10"/>
+  <rect x="500" y="520" width="200" height="180" rx="34" fill="#0E7490"/>
+  <circle cx="600" cy="610" r="36" fill="#F0FDFA"/>
+  <text x="600" y="150" text-anchor="middle" fill="#0C4A6E" font-family="Arial" font-size="54" font-weight="700">Aero Blender Set</text>
+</svg>
