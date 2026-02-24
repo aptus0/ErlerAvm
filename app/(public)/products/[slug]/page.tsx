@@ -54,7 +54,12 @@ export default async function ProductDetailPage({ params }: ProductDetailProps) 
       </nav>
 
       <section className="grid gap-6 xl:grid-cols-[1.25fr_0.85fr] xl:items-start">
-        <ProductGallery productName={product.name} media={detail.media} has3d={product.has3d} />
+        <ProductGallery
+          productName={product.name}
+          productSlug={product.slug}
+          media={detail.media}
+          has3d={product.has3d}
+        />
         <PurchaseCard product={product} detail={detail} />
       </section>
 

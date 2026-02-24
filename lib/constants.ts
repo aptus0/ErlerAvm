@@ -45,6 +45,9 @@ export interface ProductMediaItem {
   title: string;
   subtitle: string;
   duration?: string;
+  imageSrc?: string;
+  posterSrc?: string;
+  videoSrc?: string;
   gradientFrom: string;
   gradientTo: string;
 }
@@ -207,7 +210,7 @@ export const PRODUCTS: Product[] = [
     price: 45999,
     category: "Elektronik",
     shortDescription: "14 inç, ince kasa, günlük iş ve oyun dengesi.",
-    image: "/products/atlas-pro.svg",
+    image: "/products/real/atlas-main.jpg",
     isFeatured: true,
     isNew: true,
     isCampaign: false,
@@ -220,7 +223,7 @@ export const PRODUCTS: Product[] = [
     price: 8699,
     category: "Elektronik",
     shortDescription: "Kablosuz bağlantı ve surround destekli set.",
-    image: "/products/nova-audio.svg",
+    image: "/products/real/nova-main.jpg",
     isFeatured: true,
     isNew: false,
     isCampaign: true,
@@ -233,7 +236,7 @@ export const PRODUCTS: Product[] = [
     price: 4299,
     category: "Ev",
     shortDescription: "Tek tuş ile espresso ve filtre kahve hazırlar.",
-    image: "/products/vera-coffee.svg",
+    image: "/products/real/vera-main.jpg",
     isFeatured: false,
     isNew: true,
     isCampaign: true,
@@ -246,7 +249,7 @@ export const PRODUCTS: Product[] = [
     price: 6399,
     category: "Yasam",
     shortDescription: "Bel desteği ve file sırtlık ile uzun çalışma konforu.",
-    image: "/products/modo-chair.svg",
+    image: "/products/real/modo-main.jpg",
     isFeatured: true,
     isNew: false,
     isCampaign: false,
@@ -259,7 +262,7 @@ export const PRODUCTS: Product[] = [
     price: 1999,
     category: "Ev",
     shortDescription: "Cam hazne, buz kırma modu ve kolay temizlik.",
-    image: "/products/aero-blender.svg",
+    image: "/products/real/aero-main.jpg",
     isFeatured: false,
     isNew: true,
     isCampaign: false,
@@ -272,7 +275,7 @@ export const PRODUCTS: Product[] = [
     price: 17999,
     category: "Yasam",
     shortDescription: "Katlanabilir gövde, sessiz motor, mobil uygulama desteği.",
-    image: "/products/stride-runner.svg",
+    image: "/products/real/stride-main.jpg",
     isFeatured: false,
     isNew: false,
     isCampaign: true,
@@ -315,6 +318,36 @@ const PRODUCT_MEDIA_PALETTE: Record<string, { from: string; to: string }> = {
   Elektronik: { from: "#fef2f2", to: "#fee2e2" },
   Ev: { from: "#fff7ed", to: "#ffedd5" },
   Yasam: { from: "#fdf4ff", to: "#fce7f3" },
+};
+
+const PRODUCT_GALLERY_IMAGES: Record<string, string[]> = {
+  "atlas-pro-laptop": [
+    "/products/real/atlas-main.jpg",
+    "/products/real/atlas-detail-1.jpg",
+    "/products/real/atlas-detail-2.jpg",
+    "/products/real/atlas-detail-3.jpg",
+    "/products/real/atlas-detail-4.jpg",
+  ],
+  "nova-ses-sistemi": [
+    "/products/real/nova-main.jpg",
+    "/products/real/nova-detail-1.jpg",
+  ],
+  "vera-kahve-makinesi": [
+    "/products/real/vera-main.jpg",
+    "/products/real/vera-detail-1.jpg",
+  ],
+  "modo-ofis-koltugu": [
+    "/products/real/modo-main.jpg",
+    "/products/real/modo-detail-1.jpg",
+  ],
+  "aero-blender-set": [
+    "/products/real/aero-main.jpg",
+    "/products/real/aero-detail-1.jpg",
+  ],
+  "stride-kosu-bandi": [
+    "/products/real/stride-main.jpg",
+    "/products/real/stride-detail-1.jpg",
+  ],
 };
 
 const DEFAULT_BENEFITS: ProductBenefit[] = [
@@ -472,6 +505,9 @@ function createDefaultMedia(product: Product): ProductMediaItem[] {
     from: "#f8fafc",
     to: "#e2e8f0",
   };
+  const galleryImages = PRODUCT_GALLERY_IMAGES[product.slug] ?? [product.image];
+  const pickImage = (index: number) =>
+    galleryImages[index] ?? galleryImages[index % galleryImages.length] ?? product.image;
 
   return [
     {
@@ -479,6 +515,7 @@ function createDefaultMedia(product: Product): ProductMediaItem[] {
       type: "image",
       title: "On Gorunum",
       subtitle: "Detayli urun acisi",
+      imageSrc: pickImage(0),
       gradientFrom: palette.from,
       gradientTo: palette.to,
     },
@@ -487,6 +524,7 @@ function createDefaultMedia(product: Product): ProductMediaItem[] {
       type: "image",
       title: "Yakin Plan",
       subtitle: "Malzeme ve iscilik odagi",
+      imageSrc: pickImage(1),
       gradientFrom: palette.to,
       gradientTo: "#ffffff",
     },
@@ -496,6 +534,7 @@ function createDefaultMedia(product: Product): ProductMediaItem[] {
       title: "Gercek Kullanim Videosu",
       subtitle: "Urunun elde kullanim demosu",
       duration: "00:24",
+      posterSrc: pickImage(2),
       gradientFrom: "#111827",
       gradientTo: "#374151",
     },
@@ -504,6 +543,7 @@ function createDefaultMedia(product: Product): ProductMediaItem[] {
       type: "image",
       title: "Yasam Alani",
       subtitle: "Mekan icinde olcek gosterimi",
+      imageSrc: pickImage(3),
       gradientFrom: "#fff1f2",
       gradientTo: "#fee2e2",
     },
@@ -512,6 +552,7 @@ function createDefaultMedia(product: Product): ProductMediaItem[] {
       type: "image",
       title: "Aksesuarlar",
       subtitle: "Kutu icerigi ve aparatlar",
+      imageSrc: pickImage(4),
       gradientFrom: "#fef9c3",
       gradientTo: "#fde68a",
     },
@@ -627,6 +668,7 @@ const PRODUCT_DETAIL_OVERRIDES: Partial<Record<string, ProductDetail>> = {
         type: "image",
         title: "Studio Cekim",
         subtitle: "Ince kasa premium gorunum",
+        imageSrc: "/products/real/atlas-main.jpg",
         gradientFrom: "#fff1f2",
         gradientTo: "#fecdd3",
       },
@@ -635,6 +677,7 @@ const PRODUCT_DETAIL_OVERRIDES: Partial<Record<string, ProductDetail>> = {
         type: "image",
         title: "Klavye ve Ekran",
         subtitle: "Yakin plan detaylar",
+        imageSrc: "/products/real/atlas-detail-1.jpg",
         gradientFrom: "#fef3c7",
         gradientTo: "#fde68a",
       },
@@ -644,6 +687,7 @@ const PRODUCT_DETAIL_OVERRIDES: Partial<Record<string, ProductDetail>> = {
         title: "Gercek Kullanim",
         subtitle: "Toplanti ve tasarim senaryosu",
         duration: "00:28",
+        posterSrc: "/products/real/atlas-detail-2.jpg",
         gradientFrom: "#1f2937",
         gradientTo: "#111827",
       },
@@ -652,6 +696,7 @@ const PRODUCT_DETAIL_OVERRIDES: Partial<Record<string, ProductDetail>> = {
         type: "image",
         title: "Port Baglantilari",
         subtitle: "Tum baglanti secenekleri",
+        imageSrc: "/products/real/atlas-detail-3.jpg",
         gradientFrom: "#ede9fe",
         gradientTo: "#ddd6fe",
       },
@@ -660,6 +705,7 @@ const PRODUCT_DETAIL_OVERRIDES: Partial<Record<string, ProductDetail>> = {
         type: "image",
         title: "Calisma Masasi",
         subtitle: "Gercek mekan olcegi",
+        imageSrc: "/products/real/atlas-detail-4.jpg",
         gradientFrom: "#f0f9ff",
         gradientTo: "#dbeafe",
       },

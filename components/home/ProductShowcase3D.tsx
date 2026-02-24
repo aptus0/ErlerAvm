@@ -12,7 +12,7 @@ export function ProductShowcase3D({ products }: ProductShowcase3DProps) {
   return (
     <Sections
       title="3D Ürünler"
-      description="Sprint 2 için @react-three/fiber entegrasyonuna hazır, V1'de yer tutucu kartlarla geliyor."
+      description="Urun detayinda 360 / 3D modal aktif. Sahne @react-three/fiber ile calisir."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
