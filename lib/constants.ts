@@ -223,7 +223,7 @@ export const PRODUCTS: Product[] = [
     price: 8699,
     category: "Elektronik",
     shortDescription: "Kablosuz bağlantı ve surround destekli set.",
-    image: "/products/real/nova-main.jpg",
+    image: "/products/real/erler-campaign.jpg",
     isFeatured: true,
     isNew: false,
     isCampaign: true,
@@ -329,7 +329,7 @@ const PRODUCT_GALLERY_IMAGES: Record<string, string[]> = {
     "/products/real/atlas-detail-4.jpg",
   ],
   "nova-ses-sistemi": [
-    "/products/real/nova-main.jpg",
+    "/products/real/erler-campaign.jpg",
     "/products/real/nova-detail-1.jpg",
   ],
   "vera-kahve-makinesi": [
