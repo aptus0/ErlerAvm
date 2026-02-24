@@ -224,7 +224,9 @@ export function Banner() {
           "brand-hero-grain brand-hero-stars relative left-1/2 w-screen -translate-x-1/2 overflow-hidden border-y border-[color:var(--color-border)]",
           "bg-[radial-gradient(circle_at_top_right,_#a01629_0%,_#7f1d1d_32%,_#4c1016_66%,_#2c0b11_100%)]",
           "transition-[min-height,padding] duration-500",
-          compactHero ? "min-h-[430px] px-4 py-7" : "min-h-[calc(100vh-7.2rem)] px-4 py-10",
+          compactHero
+            ? "min-h-[430px] px-4 py-7"
+            : "min-h-[560px] px-4 py-8 md:min-h-[calc(100vh-7.2rem)] md:py-10",
         ].join(" ")}
       >
         <div className="pointer-events-none absolute -right-20 top-8 h-60 w-60 rounded-full bg-[#f59e0b]/20 blur-3xl" />
@@ -278,7 +280,7 @@ export function Banner() {
           </div>
         ) : null}
 
-        <div className="container relative z-10 grid gap-8 xl:grid-cols-[1.2fr_0.92fr] xl:items-center">
+        <div className="container relative z-10 grid gap-5 sm:gap-8 xl:grid-cols-[1.2fr_0.92fr] xl:items-center">
           <div
             className={[
               "will-change-transform transition-all duration-500",
@@ -288,20 +290,20 @@ export function Banner() {
             <p className="inline-flex items-center gap-1 rounded-full border border-amber-200/60 bg-[#3c1118]/65 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-100">
               <SparklesIcon className="size-4" /> ERLER AVM KAMPANYA
             </p>
-            <h1 className="mt-3 max-w-3xl text-3xl font-black leading-tight text-white md:text-5xl">
+            <h1 className="mt-3 max-w-3xl text-2xl font-black leading-tight text-white sm:text-3xl md:text-5xl">
               Premium kampanya haftasi ve modern e-ticaret deneyimi
             </h1>
-            <p className="mt-4 max-w-2xl text-sm text-rose-100/90 md:text-base">
+            <p className="mt-3 max-w-2xl text-xs text-rose-100/90 sm:mt-4 sm:text-sm md:text-base">
               Banner alani mat yildizli premium zeminde 3D urun vitriniyle calisir. Kampanya urunlerini hizli inceleyip
               tek tikla detay sayfasina gecebilirsiniz.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-5 grid grid-cols-1 gap-2 sm:mt-6 sm:flex sm:flex-wrap sm:gap-3">
               <Link href="/products">
-                <Button className="h-11 px-6 text-white">Urunlere Git</Button>
+                <Button className="h-11 w-full px-6 text-white sm:w-auto">Urunlere Git</Button>
               </Link>
               <Link href="/products?campaign=flash">
-                <Button variant="secondary" className="h-11 px-6">
+                <Button variant="secondary" className="h-11 w-full px-6 sm:w-auto">
                   Kampanyalari Gor
                 </Button>
               </Link>
@@ -310,7 +312,7 @@ export function Banner() {
 
           <aside
             className={[
-              "will-change-transform rounded-3xl border border-[color:var(--color-border)] bg-white/88 p-5 shadow-[0_20px_36px_rgba(15,23,42,0.12)] backdrop-blur-sm transition-all duration-500",
+              "will-change-transform rounded-3xl border border-[color:var(--color-border)] bg-white/88 p-3.5 shadow-[0_20px_36px_rgba(15,23,42,0.12)] backdrop-blur-sm transition-all duration-500 sm:p-5",
               compactHero ? "translate-y-[6px] opacity-95" : "translate-y-0 opacity-100",
             ].join(" ")}
           >
@@ -321,23 +323,23 @@ export function Banner() {
                 </p>
                 <div ref={hero3dRef} className="mt-3 overflow-hidden rounded-xl border border-[color:var(--color-border)]">
                   {render3dViewer ? (
-                    <ProductViewer3D productSlug={active3dProduct.slug} className="h-[240px]" />
+                    <ProductViewer3D productSlug={active3dProduct.slug} className="h-[190px] sm:h-[240px]" />
                   ) : (
-                    <div className="relative h-[240px] bg-[radial-gradient(circle_at_top,_#fff7f8,_#ffe4e6,_#fff1f2)]">
+                    <div className="relative h-[190px] bg-[radial-gradient(circle_at_top,_#fff7f8,_#ffe4e6,_#fff1f2)] sm:h-[240px]">
                       <Image
                         src={active3dProduct.image}
                         alt={`${active3dProduct.name} onizleme`}
                         fill
-                        sizes="(max-width: 768px) 100vw, 480px"
+                        sizes="(max-width: 640px) 100vw, 480px"
                         className="object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-                      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 p-3">
+                      <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-3 sm:flex-row sm:items-center sm:justify-between">
                         <p className="text-xs font-semibold text-white/95">3D sahne performans icin gec yukleniyor</p>
                         <button
                           type="button"
                           onClick={() => setRender3dViewer(true)}
-                          className="rounded-lg border border-white/50 bg-black/45 px-2.5 py-1.5 text-[11px] font-semibold text-white"
+                          className="self-start rounded-lg border border-white/50 bg-black/45 px-2.5 py-1.5 text-[11px] font-semibold text-white sm:self-auto"
                         >
                           3D Yukle
                         </button>
@@ -346,7 +348,7 @@ export function Banner() {
                   )}
                 </div>
 
-                <div className="mt-3 flex items-center justify-between gap-2">
+                <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
                   <div>
                     <p className="text-sm font-bold text-[color:var(--color-foreground)]">{active3dProduct.name}</p>
                     <p className="text-xs text-[color:var(--color-muted)]">{active3dProduct.category}</p>
@@ -354,14 +356,14 @@ export function Banner() {
                   <p className="text-sm font-bold text-[color:var(--color-primary)]">{formatTry(active3dProduct.price)}</p>
                 </div>
 
-                <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
+                <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
                   {banner3dProducts.map((product) => (
                     <button
                       key={`banner-3d-${product.slug}`}
                       type="button"
                       onClick={() => setActive3dSlug(product.slug)}
                       className={[
-                        "rounded-lg border px-2 py-2 text-left text-xs font-semibold transition",
+                        "rounded-lg border px-2 py-2 text-left text-[11px] font-semibold transition sm:text-xs",
                         active3dSlug === product.slug
                           ? "border-[color:var(--color-primary)] bg-[#ffe4e6] text-[color:var(--color-primary)]"
                           : "border-[color:var(--color-border)] bg-white hover:border-[color:var(--color-primary)]",
