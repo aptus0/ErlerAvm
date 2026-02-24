@@ -50,3 +50,60 @@ a {
   border-radius: 1rem;
   background: var(--color-surface);
 }
+
+.brand-hero-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(127, 29, 29, 0.07) 0.6px, transparent 0.6px);
+  background-size: 3px 3px;
+  opacity: 0.25;
+}
+
+@keyframes brandSplashFill {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes brandSplashFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes brandBallFall {
+  0% {
+    transform: translate3d(0, -10px, 0) scale(0.92);
+  }
+  30% {
+    transform: translate3d(calc(var(--ball-drift, 0px) * 0.35), 44px, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(var(--ball-drift, 0px), 196px, 0) scale(0.96);
+    opacity: 0;
+  }
+}
+
+.brand-splash-fill {
+  clip-path: inset(100% 0 0 0);
+  animation: brandSplashFill 0.8s cubic-bezier(0.2, 0.7, 0.22, 1) forwards;
+}
+
+.brand-splash-fade-out {
+  animation: brandSplashFadeOut 0.2s ease forwards;
+}
+
+.brand-falling-ball {
+  animation-name: brandBallFall;
+  animation-timing-function: cubic-bezier(0.22, 0.78, 0.25, 1);
+  animation-fill-mode: forwards;
+}

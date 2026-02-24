@@ -59,6 +59,10 @@ export function Navbar() {
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<Record<string, boolean>>({});
+  const [scrolled, setScrolled] = useState(false);
+
+  const isHome = pathname === "/";
+  const compactNav = scrolled;
 
   const items = useMemo(
     () => getActiveMenuItems().filter((item) => item.id !== "account"),
@@ -76,9 +80,30 @@ export function Navbar() {
     return () => document.removeEventListener("pointerdown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 36);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav ref={navRef} className="relative z-40 border-b border-[color:var(--color-border)] bg-white shadow-[0_8px_18px_rgba(15,23,42,0.04)]">
-      <div className="container py-3">
+    <nav
+      ref={navRef}
+      className={[
+        "sticky top-0 z-50 transition-all duration-300",
+        isHome && !compactNav
+          ? "border-b border-transparent bg-white/75 backdrop-blur-md"
+          : "border-b border-[color:var(--color-border)] bg-white/96 shadow-[0_8px_18px_rgba(15,23,42,0.08)] backdrop-blur-md",
+      ].join(" ")}
+    >
+      <div className={["container transition-all duration-300", compactNav ? "py-2" : "py-3"].join(" ")}>
         <div className="flex items-center gap-2">
           <Link href="/" className="inline-flex items-center gap-2 rounded-xl px-2 py-1 hover:bg-[#fff4f4]">
             <Image

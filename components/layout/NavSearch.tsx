@@ -93,7 +93,7 @@ export function NavSearch({ className = "" }: NavSearchProps) {
 
                   <button
                     type="button"
-                    className="inline-flex items-center gap-1 rounded-lg border border-[color:var(--color-border)] bg-[#fff8f8] px-2.5 py-1.5 text-xs font-semibold text-[color:var(--color-primary)] hover:border-[color:var(--color-primary)]"
+                    className="inline-flex items-center gap-1 rounded-lg border border-[color:var(--color-primary)] bg-[color:var(--color-primary)] px-2.5 py-1.5 text-xs font-semibold text-white hover:bg-[color:var(--color-primary-strong)]"
                   >
                     <ShoppingCartIcon className="size-4" />
                     Sepet

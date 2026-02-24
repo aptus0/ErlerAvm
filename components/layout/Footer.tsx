@@ -51,7 +51,7 @@ const footerGroups: Array<{
   },
 ];
 
-const paymentBadges = ["VISA", "Mastercard", "Maestro", "TROY"] as const;
+const cardBadges = ["VISA", "Mastercard", "Maestro", "TROY"] as const;
 
 export function Footer() {
   return (
@@ -60,7 +60,10 @@ export function Footer() {
         <section className="rounded-3xl border border-[color:var(--color-border)] bg-white p-4 shadow-[0_18px_34px_rgba(15,23,42,0.06)] md:p-6">
           <div className="grid gap-3 md:hidden">
             {footerGroups.map((group) => (
-              <details key={`mobile-footer-${group.title}`} className="group rounded-2xl border border-[color:var(--color-border)] bg-[#fffafa]">
+              <details
+                key={`mobile-footer-${group.title}`}
+                className="group rounded-2xl border border-[color:var(--color-border)] bg-[#fffafa]"
+              >
                 <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-semibold">
                   <span>{group.title}</span>
                   <ChevronDownIcon className="size-4 text-[color:var(--color-muted)] transition-transform group-open:rotate-180" />
@@ -174,7 +177,7 @@ export function Footer() {
 
       <div className="border-t border-[color:var(--color-border)] bg-[#fff2f3]">
         <div className="container py-5">
-          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <p className="text-xl font-black tracking-[0.26em] text-[color:var(--color-primary)] md:text-2xl">ERLER AVM</p>
               <p className="mt-1 text-xs text-[color:var(--color-muted)]">© 2026 ERLER AVM. Tum haklari saklidir.</p>
@@ -182,9 +185,27 @@ export function Footer() {
 
             <div className="flex flex-wrap items-center gap-2">
               <span className="rounded-lg border border-[color:var(--color-border)] bg-white px-2 py-1 text-[11px] font-semibold text-[color:var(--color-muted)]">
-                Guvenli Odeme
+                Guvenli Odeme Altyapisi
               </span>
-              {paymentBadges.map((badge) => (
+              <div className="inline-flex items-center rounded-lg border border-[color:var(--color-border)] bg-white px-2 py-1">
+                <Image
+                  src="/payments/iyzico-logo.jpg"
+                  alt="iyzico"
+                  width={88}
+                  height={24}
+                  className="h-6 w-auto object-contain"
+                />
+              </div>
+              <div className="inline-flex items-center rounded-lg border border-[color:var(--color-border)] bg-white px-1 py-1">
+                <Image
+                  src="/payments/iyzico-badge.jpg"
+                  alt="iyzico korumali odeme"
+                  width={32}
+                  height={32}
+                  className="h-7 w-7 rounded-sm object-cover"
+                />
+              </div>
+              {cardBadges.map((badge) => (
                 <span
                   key={badge}
                   className="rounded-lg border border-[color:var(--color-border)] bg-white px-2 py-1 text-[11px] font-semibold text-[color:var(--color-muted)]"

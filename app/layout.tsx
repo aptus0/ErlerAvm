@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   },
   description: "ERLER AVM e-ticaret altyapisi - Next.js App Router V1",
   metadataBase: new URL("http://localhost:3000"),
+  icons: {
+    icon: "/logo/erler-logo.png",
+    shortcut: "/logo/erler-logo.png",
+    apple: "/logo/erler-logo.png",
+  },
 };
 
 export default function RootLayout({

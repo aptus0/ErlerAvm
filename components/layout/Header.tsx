@@ -1,16 +1,53 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function Header() {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  const isHome = pathname === "/";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 26);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="border-b border-[color:var(--color-border)] bg-white">
-      <div className="container flex min-h-10 flex-wrap items-center justify-between gap-2 text-xs text-[color:var(--color-muted)] sm:text-sm">
-        <p className="font-medium">7/24 Müşteri Desteği: 0850 000 00 00</p>
+    <header
+      className={[
+        "transition-all duration-300",
+        isHome && !scrolled
+          ? "border-b border-transparent bg-white/70 backdrop-blur-md"
+          : "border-b border-[color:var(--color-border)] bg-white",
+      ].join(" ")}
+    >
+      <div
+        className={[
+          "container flex flex-wrap items-center justify-between gap-2 text-xs text-[color:var(--color-muted)] transition-all duration-300 sm:text-sm",
+          scrolled ? "min-h-9" : "min-h-10",
+        ].join(" ")}
+      >
+        <p className="font-medium">7/24 Musteri Destegi: 0850 000 00 00</p>
         <div className="flex items-center gap-3">
           <Link href="/corporate/kargo-ve-teslimat" className="font-semibold hover:text-[color:var(--color-primary)]">
-            Aynı Gün Kargo
+            Ayni Gun Kargo
           </Link>
-          <Link href="/corporate/iade-politikasi" className="hidden font-semibold hover:text-[color:var(--color-primary)] sm:inline-flex">
-            14 Gün İade
+          <Link
+            href="/corporate/iade-politikasi"
+            className="hidden font-semibold hover:text-[color:var(--color-primary)] sm:inline-flex"
+          >
+            14 Gun Iade
           </Link>
         </div>
       </div>
