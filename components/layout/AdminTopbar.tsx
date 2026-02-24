@@ -25,7 +25,7 @@ export function AdminTopbar() {
       <div className="flex items-center justify-between">
         <div>
           <p className="text-xs uppercase tracking-wide text-[color:var(--color-muted)]">Yonetim Paneli</p>
-          <p className="text-sm font-semibold">Erkur AVM V1</p>
+          <p className="text-sm font-semibold">ERLER AVM V1</p>
         </div>
         <Button type="button" variant="secondary" onClick={handleLogout} disabled={loading}>
           {loading ? "Cikis yapiliyor..." : "Cikis yap"}

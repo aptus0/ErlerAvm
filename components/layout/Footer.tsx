@@ -10,9 +10,9 @@ export function Footer() {
         <div className="grid gap-8 rounded-3xl border border-[color:var(--color-border)] bg-[#fffafb] p-6 shadow-[0_18px_34px_rgba(15,23,42,0.08)] lg:grid-cols-[1.15fr_1fr_1fr_0.9fr]">
           <section>
             <div className="flex items-center gap-3">
-              <Image src="/logo/erler-logo.svg" alt="Erler AVM logo" width={44} height={44} className="rounded-md" />
+              <Image src="/logo/erler-logo.png" alt="ERLER AVM logo" width={44} height={44} className="h-11 w-11 object-contain" />
               <div>
-                <p className="text-lg font-bold text-[color:var(--color-primary)]">Erkur AVM</p>
+                <p className="text-lg font-bold text-[color:var(--color-primary)]">ERLER AVM</p>
                 <p className="text-xs text-[color:var(--color-muted)]">Kırmızı-Beyaz Güvenli Alışveriş</p>
               </div>
             </div>
@@ -89,8 +89,8 @@ export function Footer() {
 
       <div className="border-t border-[color:var(--color-border)] bg-[#fff5f6] py-4">
         <div className="container flex flex-wrap items-center justify-between gap-2 text-xs text-[color:var(--color-muted)]">
-          <p>© 2026 Erkur AVM. Tüm hakları saklıdır.</p>
-          <p className="text-lg font-bold tracking-[0.24em] text-[color:var(--color-primary)]">ERLER VM</p>
+          <p>© 2026 ERLER AVM. Tüm hakları saklıdır.</p>
+          <p className="text-lg font-bold tracking-[0.24em] text-[color:var(--color-primary)]">ERLER AVM</p>
         </div>
       </div>
     </footer>

@@ -82,11 +82,11 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <Link href="/" className="inline-flex items-center gap-2 rounded-xl px-2 py-1 hover:bg-[#fff4f4]">
             <Image
-              src="/logo/erler-logo.svg"
-              alt="Erler AVM logo"
+              src="/logo/erler-logo.png"
+              alt="ERLER AVM logo"
               width={42}
               height={42}
-              className="rounded-md"
+              className="h-11 w-11 object-contain"
             />
             <div className="hidden sm:block">
               <p className="text-xs uppercase tracking-[0.18em] text-[color:var(--color-muted)]">ERLER AVM</p>

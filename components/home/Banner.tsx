@@ -17,7 +17,7 @@ export function Banner() {
       <div className="relative grid gap-6 xl:grid-cols-[1.25fr_0.95fr] xl:items-center">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--color-primary)]">
-            Erkur AVM V1
+            ERLER AVM V1
           </p>
           <h1 className="mt-3 text-3xl font-bold leading-tight text-[color:var(--color-foreground)] md:text-5xl">
             Kırmızı-Beyaz temada modern e-ticaret altyapısı

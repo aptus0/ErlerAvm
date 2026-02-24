@@ -284,7 +284,7 @@ export const CORPORATE_PAGES: Record<string, CorporatePageContent> = {
   hakkimizda: {
     title: "Hakkimizda",
     content:
-      "Erkur AVM, teknoloji ve yasam urunlerini tek cati altinda bulusturmak icin kuruldu. Hizli teslimat, guvenilir stok ve yalnizca dogrulanmis saticilarla calisiyoruz.",
+      "ERLER AVM, teknoloji ve yasam urunlerini tek cati altinda bulusturmak icin kuruldu. Hizli teslimat, guvenilir stok ve yalnizca dogrulanmis saticilarla calisiyoruz.",
     updatedAt: "2026-02-24",
   },
   kvkk: {
@@ -528,7 +528,7 @@ function buildFallbackProductDetail(product: Product): ProductDetail {
   const oldPrice = isCampaign ? Math.round(product.price * 1.2) : Math.round(product.price * 1.08);
 
   return {
-    brand: "Erkur Select",
+    brand: "ERLER Select",
     rating,
     reviewCount: 248 + reviews.length,
     soldCount: 1200 + product.price % 300,

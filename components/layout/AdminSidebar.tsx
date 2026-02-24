@@ -13,7 +13,7 @@ export function AdminSidebar() {
   return (
     <aside className="w-72 border-r border-[color:var(--color-border)] bg-white px-5 py-6">
       <Link href="/admin" className="text-lg font-bold text-[color:var(--color-primary)]">
-        Erkur Admin
+        ERLER Admin
       </Link>
       <nav className="mt-8 grid gap-1">
         {adminLinks.map((link) => (

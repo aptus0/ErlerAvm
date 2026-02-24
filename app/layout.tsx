@@ -15,10 +15,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Erler AVM",
-    template: "%s | Erler AVM",
+    default: "ERLER AVM",
+    template: "%s | ERLER AVM",
   },
-  description: "Erler AVM e-ticaret altyapisi - Next.js App Router V1",
+  description: "ERLER AVM e-ticaret altyapisi - Next.js App Router V1",
   metadataBase: new URL("http://localhost:3000"),
 };
 

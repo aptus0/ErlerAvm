@@ -9,7 +9,7 @@ export default function AdminSettingsPage() {
       </p>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
-        <Input id="store-name" label="Magaza Adi" defaultValue="Erkur AVM" />
+        <Input id="store-name" label="Magaza Adi" defaultValue="ERLER AVM" />
         <Input id="store-email" label="Destek E-posta" defaultValue="destek@erkuravm.com" />
         <Input id="store-phone" label="Destek Telefon" defaultValue="0850 000 00 00" />
         <Input id="cargo-threshold" label="Ucretsiz Kargo Limiti" defaultValue="1500" />
